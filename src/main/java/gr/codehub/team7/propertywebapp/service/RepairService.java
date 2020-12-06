@@ -14,6 +14,10 @@ public interface RepairService {
 
     List<Repair> findByRepairDateBetween(LocalDate date1, LocalDate date2);
 
+    Repair insertRepair(Repair repair);
+
+    Repair updateRepair(Repair repair, Long id);
+
     void deleteRepairById(Long id);
 
 }

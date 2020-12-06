@@ -31,6 +31,19 @@ public class RepairServiceImpl implements RepairService{
         return repairRepository.findByRepairDateBetween(date1, date2);
     }
 
+    @Override
+    public Repair insertRepair(Repair repair) {
+        return repairRepository.save(repair);
+    }
+
+    @Override
+    public Repair updateRepair(Repair repair, Long id) {
+        if(repairRepository.findById(id).isPresent()){
+            repair.setId(id);
+            return repairRepository.save(repair);
+        }
+        return  null;
+    }
 
     @Override
     public void deleteRepairById(Long id) {

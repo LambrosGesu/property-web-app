@@ -1,6 +1,7 @@
 package gr.codehub.team7.propertywebapp.domain;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import gr.codehub.team7.propertywebapp.enums.PropertyType;
 
 import javax.persistence.*;
@@ -47,7 +48,8 @@ public class Owner {
     @Column(name = "isAdmin")
     private boolean isAdmin;
 
-    @JsonBackReference
+    @JsonIgnore
+    //@JsonBackReference
     @OneToMany(mappedBy = "owner", targetEntity = Repair.class)
     private List<Repair> repairs;
 
