@@ -17,3 +17,5 @@ INSERT INTO REPAIR (repair_date, status, job_type, price, address, description, 
 INSERT INTO REPAIR (repair_date, status, job_type, price, address, description, owner_id) VALUES ('2020-01-01', 'PENDING', 'ISOLATION', 68.2, 'Zakinthou 13', 'This is an Electrical repair', 3);
 INSERT INTO REPAIR (repair_date, status, job_type, price, address, description, owner_id) VALUES ('2020-01-01', 'FINISHED','ISOLATION', 75.4, 'Evoias 11', 'This is an Electrical repair', 4);
 INSERT INTO REPAIR (repair_date, status, job_type, price, address, description, owner_id) VALUES ('2020-01-01', 'FINISHED','PAINTING', 75.4, 'Evoias 11', 'This is an Electrical repair', 4);
+INSERT INTO REPAIR (repair_date, status, job_type, price, address, description, owner_id) VALUES ('1215-01-01', 'FINISHED','PAINTING', 75.4, 'Evoias 11', 'This is an Electrical repair', 4);
+INSERT INTO REPAIR (repair_date, status, job_type, price, address, description, owner_id) VALUES ('1269-01-01', 'FINISHED','PAINTING', 75.4, 'Evoias 11', 'This is an Electrical repair', 4);

@@ -14,11 +14,6 @@ public class OwnerServiceImpl implements OwnerService{
     @Autowired
     private OwnerRepository ownerRepository;
 
-//    @Override
-//    public Optional<Owner> findOwner(Long id) {
-//        return ownerRepository.findById(id);
-//    }
-
     @Override
     public List<Owner> getAllOwners() {
         return ownerRepository.findAll();

@@ -7,9 +7,8 @@ import java.util.Optional;
 
 public interface OwnerService {
 
-//    Optional<Owner> findOwner(Long id);
-    List<Owner> getAllOwners();
 
+    List<Owner> getAllOwners();
     Optional<Owner> findOwnerByEmail(String email);
     Optional<Owner> findOwnerBySsn(String ssn);
 
