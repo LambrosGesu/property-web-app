@@ -1,20 +1,20 @@
 package gr.codehub.team7.propertywebapp.service;
 
+import gr.codehub.team7.propertywebapp.domain.Owner;
 import gr.codehub.team7.propertywebapp.domain.Repair;
 import gr.codehub.team7.propertywebapp.repository.RepairRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-import java.sql.Date;
 import java.time.LocalDate;
 import java.util.List;
-import java.util.Optional;
 
 @Service
 public class RepairServiceImpl implements RepairService{
 
     @Autowired
     private RepairRepository repairRepository;
+    @Autowired
+    private OwnerService ownerService;
 
     @Override
     public List<Repair> findAll() {
@@ -31,6 +31,11 @@ public class RepairServiceImpl implements RepairService{
         return repairRepository.findByRepairDateBetween(date1, date2);
     }
 
+    @Override
+    public List<Repair> findByOwnerSSN(String SSN) {
+        Owner owner = ownerService.findOwnerBySsn(SSN).orElse(null);
+        return repairRepository.findByOwner(owner);
+    }
 
     @Override
     public void deleteRepairById(Long id) {
