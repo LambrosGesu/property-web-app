@@ -18,6 +18,8 @@ public interface RepairService {
 
     Repair updateRepair(Repair repair, Long id);
 
+    List<Repair> findByOwnerSSN(String SSN);
+
     void deleteRepairById(Long id);
 
 }

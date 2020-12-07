@@ -171,7 +171,6 @@ public class Owner {
                 ", password='" + password + '\'' +
                 ", propertyType=" + propertyType +
                 ", isAdmin=" + isAdmin +
-                ", repairs=" + repairs +
                 '}';
     }
 }
