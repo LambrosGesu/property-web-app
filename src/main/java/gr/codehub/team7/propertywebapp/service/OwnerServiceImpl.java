@@ -30,6 +30,20 @@ public class OwnerServiceImpl implements OwnerService{
     }
 
     @Override
+    public Owner insertOwner(Owner owner) {
+        return ownerRepository.save(owner);
+    }
+
+    @Override
+    public Owner updateOwner(Owner owner, Long id) {
+        if(ownerRepository.findById(id).isPresent()){
+            owner.setId(id);
+            ownerRepository.save(owner);
+        }
+        return null;
+    }
+
+    @Override
     public void deleteOwnerById(Long id) {
         ownerRepository.deleteById(id);
     }

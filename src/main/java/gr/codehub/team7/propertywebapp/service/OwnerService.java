@@ -12,5 +12,8 @@ public interface OwnerService {
     Optional<Owner> findOwnerByEmail(String email);
     Optional<Owner> findOwnerBySsn(String ssn);
 
+    Owner insertOwner(Owner owner);
+    Owner updateOwner(Owner owner, Long id);
+
     void deleteOwnerById(Long id);
 }

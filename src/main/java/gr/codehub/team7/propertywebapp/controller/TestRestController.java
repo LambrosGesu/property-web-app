@@ -5,16 +5,9 @@ import gr.codehub.team7.propertywebapp.domain.Repair;
 import gr.codehub.team7.propertywebapp.service.OwnerService;
 import gr.codehub.team7.propertywebapp.service.RepairService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
-import java.sql.Date;
-import java.time.LocalDate;
 import java.util.List;
-import java.util.Optional;
 
 @RestController
 public class TestRestController {
@@ -42,4 +35,30 @@ public class TestRestController {
         repairService.deleteRepairById(id);
     }
 
+    @PostMapping("insertowner")
+    public Owner insertOwner(@RequestBody Owner owner){
+        return ownerService.insertOwner(owner);
+    }
+
+    @PutMapping("updateowner/{id}")
+    public Owner updateOwner(@RequestBody Owner owner, @PathVariable Long id) {
+        return ownerService.updateOwner(owner, id);
+    }
+
+    @PostMapping("insertrepair")
+    public Repair insertRepair(@RequestBody Repair repair){
+
+        return repairService.insertRepair(repair);
+    }
+
+    @PutMapping("updaterepair/{id}")
+    public Repair updateRepair(@RequestBody Repair repair, @PathVariable Long id){
+        return repairService.updateRepair(repair,id);
+    }
+
+    @GetMapping("getrepairbyssn/{ssn}")
+    public List<Repair> getRepairByOwnerSsn(@PathVariable String ssn){
+        System.out.println(ssn);
+        return  repairService.findByOwnerSSN(ssn);
+    }
 }

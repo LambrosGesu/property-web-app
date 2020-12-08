@@ -40,9 +40,9 @@ public class Repair {
     @Column(name = "description", length = MAX_DESCR_LENGTH)
     private String description;
 
-    //@JsonIgnore // CAUTION NEEDS CHANGE
+    @JsonIgnore // CAUTION NEEDS CHANGE
     @JsonManagedReference
-    @ManyToOne(optional = false, cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REFRESH, CascadeType.REMOVE})
+    @ManyToOne(optional = false, cascade = {CascadeType.MERGE, CascadeType.REFRESH, CascadeType.REMOVE})
     @JoinColumn(name = "owner_id")
     private Owner owner;
 
