@@ -6,7 +6,6 @@ import gr.codehub.team7.propertywebapp.repository.RepairRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.sql.Date;
 import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
@@ -45,12 +44,18 @@ public class RepairServiceImpl implements RepairService{
             repair.setId(id);
             return repairRepository.save(repair);
         }
-        return  null;
+        return  null; //this needs an exception implementation
     }
+
     @Override
     public List<Repair> findByOwnerSSN(String SSN) {
-        Owner owner = ownerService.findOwnerBySsn(SSN).orElse(null);
-        return repairRepository.findByOwner(owner);
+        Optional<Owner> owner = ownerService.findOwnerBySsn(SSN);
+        if(owner.isPresent()){
+            return repairRepository.findByOwner(owner.get());
+        }
+        else{
+            return null; //this needs an exception implementation
+        }
     }
 
     @Override

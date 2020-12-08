@@ -5,13 +5,9 @@ import gr.codehub.team7.propertywebapp.domain.Repair;
 import gr.codehub.team7.propertywebapp.service.OwnerService;
 import gr.codehub.team7.propertywebapp.service.RepairService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
-import java.sql.Date;
-import java.time.LocalDate;
 import java.util.List;
-import java.util.Optional;
 
 @RestController
 public class TestRestController {
@@ -46,7 +42,6 @@ public class TestRestController {
 
     @PutMapping("updateowner/{id}")
     public Owner updateOwner(@RequestBody Owner owner, @PathVariable Long id) {
-
         return ownerService.updateOwner(owner, id);
     }
 
@@ -61,4 +56,9 @@ public class TestRestController {
         return repairService.updateRepair(repair,id);
     }
 
+    @GetMapping("getrepairbyssn/{ssn}")
+    public List<Repair> getRepairByOwnerSsn(@PathVariable String ssn){
+        System.out.println(ssn);
+        return  repairService.findByOwnerSSN(ssn);
+    }
 }
