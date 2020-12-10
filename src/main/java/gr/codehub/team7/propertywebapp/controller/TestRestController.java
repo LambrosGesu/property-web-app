@@ -6,6 +6,7 @@ import gr.codehub.team7.propertywebapp.service.OwnerService;
 import gr.codehub.team7.propertywebapp.service.RepairService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.sql.Date;
@@ -13,7 +14,7 @@ import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
 
-@RestController
+@Controller
 public class TestRestController {
 
     @Autowired
@@ -23,13 +24,15 @@ public class TestRestController {
     private RepairService repairService;
 
     @GetMapping("owners")
-    public List<Owner> getOwners(){
+    public List<Owner> getOwners(Model model){
+        model.addAttribute("owners",ownerService.getAllOwners());
         return ownerService.getAllOwners();
     }
 
 
     @GetMapping("repairs")
-    public List<Repair> getBooks(){
+    public List<Repair> getBooks(Model model){
+        model.addAttribute("repairs",repairService.findAll());
         return repairService.findAll();
     }
 

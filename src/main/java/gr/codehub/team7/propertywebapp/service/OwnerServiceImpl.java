@@ -43,7 +43,7 @@ public class OwnerServiceImpl implements OwnerService{
     public Owner updateOwner(Owner owner, Long id) {
         if(ownerRepository.findById(id).isPresent()){
             owner.setId(id);
-            ownerRepository.save(owner);
+           return ownerRepository.save(owner);
         }
         return null;
     }
