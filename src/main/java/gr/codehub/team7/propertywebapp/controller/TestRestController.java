@@ -42,8 +42,16 @@ public class TestRestController {
         repairService.deleteRepairById(id);
     }
 
+    //insert owner: need one get and one post
+
+    @GetMapping("create-owner-view")
+    public String insertOnwer(){
+        return "create-owner-view";
+    }
+
     @PostMapping("insertowner")
-    public Owner insertOwner(@RequestBody Owner owner){
+    public Owner insertOwner(Model model,@ModelAttribute Owner owner){
+        model.addAttribute("owner",ownerService.insertOwner(owner));
         return ownerService.insertOwner(owner);
     }
 
