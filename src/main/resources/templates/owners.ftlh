@@ -15,6 +15,11 @@
     <thead>
     <th>ID</th>
     <th>Full Name</th>
+    <th>Address</th>
+    <th>Phone Number</th>
+    <th>Email</th>
+    <th>PropertyType</th>
+    <th>Repairs</th>
     <th class="text-center">Edit</th>
     <th class="text-center">Remove</th>
     </thead>
@@ -24,6 +29,11 @@
         <tr data-id="${owner.id}">
             <td>${owner.id}</td>
             <td>${owner.firstname} ${owner.lastname}</td>
+            <td>${owner.address}</td>
+            <td>${owner.phone_number}</td>
+            <td>${owner.email}</td>
+            <td>${owner.propertyType}</td>
+
             <td class="text-center">
                 <a href="/edit-owner/${owner.id}">
                     <span data-feather="tool"></span>
