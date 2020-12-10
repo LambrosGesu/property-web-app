@@ -12,7 +12,7 @@
 
 <div class="container pt-4">
 
-    <h1> Add a new Book </h1>
+    <h1> Add a new Owner </h1>
 
     <form method="post" action="insertowner" id="add-owner">
 
