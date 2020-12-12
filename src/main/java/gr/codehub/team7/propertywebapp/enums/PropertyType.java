@@ -3,7 +3,7 @@ package gr.codehub.team7.propertywebapp.enums;
 public enum PropertyType {
     FIRSTFLOOR("FirstFloor"),
     MAISONETTE("Maisonette"),
-    APARTMENT("Apartment Buildings");
+    APPARTMENT("Appartment Buildings");
 
     private String fullName;
 

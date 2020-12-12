@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-public class TestRestController {
+public class DougTestController {
 
     @Autowired
     private OwnerService ownerService;
@@ -18,16 +18,16 @@ public class TestRestController {
     @Autowired
     private RepairService repairService;
 
-    @GetMapping("owners")
-    public List<Owner> getOwners(){
-        return ownerService.getAllOwners();
-    }
+//    @GetMapping("owners")
+//    public List<Owner> getOwners(){
+//        return ownerService.getAllOwners();
+//    }
 
 
-    @GetMapping("repairs")
-    public List<Repair> getBooks(){
-        return repairService.findAll();
-    }
+//    @GetMapping("repairs")
+//    public List<Repair> getBooks(){
+//        return repairService.findAll();
+//    }
 
 
     @DeleteMapping("repairs/{id}")

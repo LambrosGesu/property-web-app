@@ -10,6 +10,8 @@ public interface RepairService {
 
     List<Repair> findAll();
 
+    List<Repair> findFirstTenUninished();
+
     List<Repair> findByRepairDate(LocalDate date);
 
     List<Repair> findByRepairDateBetween(LocalDate date1, LocalDate date2);

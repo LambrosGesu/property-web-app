@@ -19,7 +19,6 @@
     <th>Phone Number</th>
     <th>Email</th>
     <th>PropertyType</th>
-    <th>Repairs</th>
     <th class="text-center">Edit</th>
     <th class="text-center">Remove</th>
     </thead>
