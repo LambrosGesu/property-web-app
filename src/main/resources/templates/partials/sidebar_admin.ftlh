@@ -12,7 +12,7 @@
                 <span>Repairs</span>
             </h6>
             <li class="nav-item">
-                <a class="nav-link " href="/linktoshowrepairs">
+                <a class="nav-link " href="/repairs">
                     <span data-feather="menu"></span>
                     Show
                 </a>

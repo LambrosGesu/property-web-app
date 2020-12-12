@@ -1,14 +1,11 @@
 package gr.codehub.team7.propertywebapp.controller;
 
-import gr.codehub.team7.propertywebapp.domain.Repair;
 import gr.codehub.team7.propertywebapp.service.OwnerService;
 import gr.codehub.team7.propertywebapp.service.RepairService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-
-import java.util.List;
 
 @Controller
 public class AdminHomePageController {
@@ -26,7 +23,8 @@ public class AdminHomePageController {
 
     @GetMapping("/repairs")
     public String getRepairs(Model model){
-        return "repairs";
+        model.addAttribute("repairs", repairService.findAll());
+        return "showrepairs";
     }
 
     @GetMapping("/owners")

@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 
-    <title>hOMEe</title>
+
     <#include "./partials/head.ftlh">
     <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.min.css">-->
 
@@ -18,7 +18,7 @@
             <div class="row">
                 <div class="col-md-12 order-md-1">
                     <h2>Here is your owners</h2>
-                    <#include "./owners.ftlh">
+                    <#include "partials/owners.ftlh">
                 </div>
             </div>
         </main>
