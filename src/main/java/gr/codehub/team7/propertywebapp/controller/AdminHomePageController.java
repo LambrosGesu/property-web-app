@@ -26,6 +26,7 @@ public class AdminHomePageController {
 
     @GetMapping("/team")
     public String team(Model model) {
+
         return "team7";
     }
 

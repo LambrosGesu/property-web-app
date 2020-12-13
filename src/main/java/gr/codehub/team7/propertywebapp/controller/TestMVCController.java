@@ -10,7 +10,7 @@ public class TestMVCController {
     @GetMapping("/linktoshowrepairs")
     public String hello(Model model) {
         model.addAttribute("sidebarid",1);
-        return "homepageTest";
+        return "adminhomepage";
     }
 
 

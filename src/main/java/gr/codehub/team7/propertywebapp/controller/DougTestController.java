@@ -17,13 +17,13 @@ public class DougTestController {
 
     @Autowired
     private RepairService repairService;
-
+//
 //    @GetMapping("owners")
 //    public List<Owner> getOwners(){
 //        return ownerService.getAllOwners();
 //    }
-
-
+//
+//
 //    @GetMapping("repairs")
 //    public List<Repair> getBooks(){
 //        return repairService.findAll();
@@ -34,11 +34,11 @@ public class DougTestController {
     public void deleteRepairById(@PathVariable Long id){
         repairService.deleteRepairById(id);
     }
-
-    @PostMapping("insertowner")
-    public Owner insertOwner(@RequestBody Owner owner){
-        return ownerService.insertOwner(owner);
-    }
+//
+//    @PostMapping("insertowner")
+//    public Owner insertOwner(@RequestBody Owner owner){
+//        return ownerService.insertOwner(owner);
+//    }
 
     @PutMapping("updateowner/{id}")
     public Owner updateOwner(@RequestBody Owner owner, @PathVariable Long id) {
