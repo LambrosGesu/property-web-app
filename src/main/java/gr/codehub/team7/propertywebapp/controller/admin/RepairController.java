@@ -1,9 +1,7 @@
-package gr.codehub.team7.propertywebapp.controller;
+package gr.codehub.team7.propertywebapp.controller.admin;
 
-import gr.codehub.team7.propertywebapp.domain.Owner;
 import gr.codehub.team7.propertywebapp.domain.Repair;
 import gr.codehub.team7.propertywebapp.enums.JobType;
-import gr.codehub.team7.propertywebapp.enums.PropertyType;
 import gr.codehub.team7.propertywebapp.enums.Status;
 import gr.codehub.team7.propertywebapp.service.OwnerService;
 import gr.codehub.team7.propertywebapp.service.RepairService;
@@ -15,49 +13,18 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
 @Controller
-public class AdminHomePageController {
-    private static final String PROPERTY_TYPE = "propertyType";
-
-    @Autowired
-    private OwnerService ownerService;
+public class RepairController {
 
     @Autowired
     private RepairService repairService;
 
-    @GetMapping("/team")
-    public String team(Model model) {
-
-        return "team7";
-    }
-
-    @GetMapping("/admin")
-    public String hello(Model model) {
-        model.addAttribute("repairs",repairService.findFirstTenUninished());
-        return "adminhomepage";
-    }
+    @Autowired
+    private OwnerService ownerService;
 
     @GetMapping("/repairs")
     public String getRepairs(Model model){
         model.addAttribute("repairs", repairService.findAll());
         return "showrepairs";
-    }
-
-    @GetMapping("/owners")
-    public String getOwners(Model model){
-        model.addAttribute("owners",ownerService.getAllOwners());
-        return "showowners";
-    }
-
-    @GetMapping("/owner/create")
-    public String createOwner(Model model){
-        model.addAttribute(PROPERTY_TYPE, PropertyType.values());
-        return "createowner";
-    }
-
-    @PostMapping("/owner/create")
-    public String createOwnerPost(Model model, @ModelAttribute Owner owner){
-        ownerService.insertOwner(owner);
-        return "redirect:/owners";
     }
 
     @GetMapping("/repair/create")
@@ -73,6 +40,4 @@ public class AdminHomePageController {
         repairService.insertRepair(repair);
         return "redirect:/repairs";
     }
-
-
 }

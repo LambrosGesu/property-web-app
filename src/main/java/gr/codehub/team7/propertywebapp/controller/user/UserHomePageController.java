@@ -1,4 +1,4 @@
-package gr.codehub.team7.propertywebapp.controller;
+package gr.codehub.team7.propertywebapp.controller.user;
 
 import gr.codehub.team7.propertywebapp.domain.Owner;
 import gr.codehub.team7.propertywebapp.service.OwnerService;
