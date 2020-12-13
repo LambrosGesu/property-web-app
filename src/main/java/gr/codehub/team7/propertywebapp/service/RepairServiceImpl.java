@@ -74,6 +74,19 @@ public class RepairServiceImpl implements RepairService{
     }
 
     @Override
+    public List<Repair> findByOwnerId(Long id) {
+        Optional<Owner> owner = ownerService.findOwnerById(id);
+        if(owner.isPresent())
+        {
+            return repairRepository.findByOwner(owner.get());
+        }
+        else{
+            return  null;
+        }
+    }
+
+
+    @Override
     public void deleteRepairById(Long id) {
         repairRepository.deleteById(id);
     }

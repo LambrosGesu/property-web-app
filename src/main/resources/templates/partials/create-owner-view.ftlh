@@ -12,9 +12,7 @@
 
 <div class="container pt-4">
 
-    <h1> Add a new Owner </h1>
-
-    <form method="post" action="insertowner" id="add-owner">
+    <form method="post" action="/owner/create" id="add-owner">
 
         <div class="form-group">
             <label for="ssn">SSN</label>
@@ -53,12 +51,13 @@
         </div>
 
         <div class="form-group">
-        <select class="browser-default custom-select">
-            <option selected>Open this select menu</option>
-            <option id="FIRSTFLOOR">First floor</option>
-            <option id="MAISONETTE">Maisonette</option>
-            <option id="APARTMENT">Apartment</option>
-        </select>
+            <select class="custom-select d-block w-100" id="propertyType" name="propertyType">
+            <#if propertyType??>
+                <#list propertyType as property>
+                    <option value="${property}">${property}</option>
+                </#list>
+            </#if>
+            </select>
         </div>
         <input type="submit" class="btn btn-primary"/>
 

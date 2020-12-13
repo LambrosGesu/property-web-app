@@ -26,7 +26,7 @@
             </li>
 
             <li class="nav-item">
-                <a class="nav-link" href="/books/create">
+                <a class="nav-link" href="/repair/create">
                     <span data-feather="plus-circle"></span>
                     Create
                 </a>
@@ -51,7 +51,7 @@
             </li>
 
             <li class="nav-item">
-                <a class="nav-link" href="/books/create">
+                <a class="nav-link" href="/owner/create">
                     <span data-feather="plus-circle"></span>
                     Create
                 </a>

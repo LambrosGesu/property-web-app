@@ -22,6 +22,8 @@ public interface RepairService {
 
     List<Repair> findByOwnerSSN(String SSN);
 
+    List<Repair> findByOwnerId(Long id);
+
     void deleteRepairById(Long id);
 
 }

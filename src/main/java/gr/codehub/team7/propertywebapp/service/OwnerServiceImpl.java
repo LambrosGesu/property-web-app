@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service
 public class OwnerServiceImpl implements OwnerService{
@@ -46,6 +47,11 @@ public class OwnerServiceImpl implements OwnerService{
     @Override
     public void deleteOwnerById(Long id) {
         ownerRepository.deleteById(id);
+    }
+
+    @Override
+    public Optional<Owner> findOwnerById(Long id) {
+        return ownerRepository.findById(id);
     }
 
 }
