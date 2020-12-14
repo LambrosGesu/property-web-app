@@ -2,7 +2,7 @@
     <div class="sidebar-sticky">
         <ul class="nav flex-column" id="navItems">
             <li class="nav-item">
-                <a class="nav-link" href="/hello">
+                <a class="nav-link" href="/admin">
                     <span data-feather="home"></span>
                     Home
                 </a>
@@ -12,7 +12,7 @@
                 <span>Repairs</span>
             </h6>
             <li class="nav-item">
-                <a class="nav-link " href="/linktoshowrepairs">
+                <a class="nav-link " href="/repairs">
                     <span data-feather="menu"></span>
                     Show
                 </a>
@@ -26,7 +26,7 @@
             </li>
 
             <li class="nav-item">
-                <a class="nav-link" href="/books/create">
+                <a class="nav-link" href="/repair/create">
                     <span data-feather="plus-circle"></span>
                     Create
                 </a>
@@ -37,7 +37,7 @@
             </h6>
 
             <li class="nav-item">
-                <a class="nav-link " href="/books">
+                <a class="nav-link " href="/owners">
                     <span data-feather="menu"></span>
                     Show
                 </a>
@@ -51,7 +51,7 @@
             </li>
 
             <li class="nav-item">
-                <a class="nav-link" href="/books/create">
+                <a class="nav-link" href="/owner/create">
                     <span data-feather="plus-circle"></span>
                     Create
                 </a>

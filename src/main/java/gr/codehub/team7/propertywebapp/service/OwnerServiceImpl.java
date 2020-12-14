@@ -38,7 +38,7 @@ public class OwnerServiceImpl implements OwnerService{
     public Owner updateOwner(Owner owner, Long id) {
         if(ownerRepository.findById(id).isPresent()){
             owner.setId(id);
-            return ownerRepository.save(owner);
+           return ownerRepository.save(owner);
         }
         return null;
     }
@@ -46,6 +46,11 @@ public class OwnerServiceImpl implements OwnerService{
     @Override
     public void deleteOwnerById(Long id) {
         ownerRepository.deleteById(id);
+    }
+
+    @Override
+    public Optional<Owner> findOwnerById(Long id) {
+        return ownerRepository.findById(id);
     }
 
 }

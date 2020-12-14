@@ -4,6 +4,8 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import gr.codehub.team7.propertywebapp.enums.JobType;
 import gr.codehub.team7.propertywebapp.enums.Status;
+import org.apache.tomcat.jni.Local;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
 import java.time.LocalDate;
@@ -21,6 +23,7 @@ public class Repair {
     private Long id;
 
     @Column(name = "repair_date")
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private LocalDate repairDate;
 
     @Enumerated(EnumType.STRING)

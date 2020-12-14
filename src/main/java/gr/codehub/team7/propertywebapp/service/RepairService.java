@@ -10,6 +10,8 @@ public interface RepairService {
 
     List<Repair> findAll();
 
+    List<Repair> findFirstTenUninished();
+
     List<Repair> findByRepairDate(LocalDate date);
 
     List<Repair> findByRepairDateBetween(LocalDate date1, LocalDate date2);
@@ -19,6 +21,8 @@ public interface RepairService {
     Repair updateRepair(Repair repair, Long id);
 
     List<Repair> findByOwnerSSN(String SSN);
+
+    List<Repair> findByOwnerId(Long id);
 
     void deleteRepairById(Long id);
 
