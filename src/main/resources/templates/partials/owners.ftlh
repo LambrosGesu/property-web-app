@@ -34,7 +34,7 @@
             <td>${owner.propertyType}</td>
 
             <td class="text-center">
-                <a href="/edit-owner/${owner.id}">
+                <a href="${owner.id}/edit-owner/">
                     <span data-feather="tool"></span>
                 </a>
             </td>
