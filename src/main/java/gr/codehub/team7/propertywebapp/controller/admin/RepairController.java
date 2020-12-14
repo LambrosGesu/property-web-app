@@ -10,6 +10,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 @Controller
@@ -38,6 +39,12 @@ public class RepairController {
     @PostMapping("/repair/create")
     public String createRepairPost(Model model, @ModelAttribute Repair repair){
         repairService.insertRepair(repair);
+        return "redirect:/repairs";
+    }
+
+    @PostMapping("/repair/{id}/delete")
+    public  String deleteRepair(@PathVariable Long id){
+        repairService.deleteRepairById(id);
         return "redirect:/repairs";
     }
 }
