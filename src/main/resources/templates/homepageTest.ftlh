@@ -18,7 +18,6 @@
             <div class="row">
                 <div class="col-md-12 order-md-1">
                     hERE YOU include the adequate pages
-
                 </div>
             </div>
         </main>
