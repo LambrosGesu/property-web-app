@@ -34,14 +34,13 @@ public class RepairServiceImpl implements RepairService{
 
     @Override
     public List<Repair> findFirstTenUninished() {
-        List<Repair> firstTen= repairRepository.findAll();
 
-        List<Repair> repairs= firstTen.stream().sorted(Comparator.comparing(repair-> repair.getRepairDate()))
+        return repairRepository.findAll().stream()
                 .filter(repair -> !repair.getStatus().equals(Status.FINISHED))
+                .sorted(Comparator.comparing(repair-> repair.getRepairDate()))
                 .limit(10)
-                     .collect(Collectors.toList());
+                .collect(Collectors.toList());
 
-        return repairs;
     }
 
     @Override
