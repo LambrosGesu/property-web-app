@@ -44,8 +44,7 @@ public class OwnerController {
     @GetMapping("{id}/edit-owner")
     public String editOwner(Model model, @PathVariable Long id){
 
-           Optional<Owner> owner= ownerService.findOwnerById(id);
-           model.addAttribute("owner",owner.get());
+           model.addAttribute("owner",ownerService.findOwnerById(id).get());
            model.addAttribute(PROPERTY_TYPE,PropertyType.values());
            return "editowner";
     }
