@@ -12,10 +12,6 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
-
 @Controller
 public class OwnerController {
     private static final String PROPERTY_TYPE = "propertyType";
@@ -41,20 +37,9 @@ public class OwnerController {
         return "redirect:/owners";
     }
 
-    @GetMapping("{id}/edit-owner")
-    public String editOwner(Model model, @PathVariable Long id){
-
-           model.addAttribute("owner",ownerService.findOwnerById(id).get());
-           model.addAttribute(PROPERTY_TYPE,PropertyType.values());
-           return "editowner";
+    @PostMapping("/owner/{id}/delete")
+    public  String deleteOwner(@PathVariable Long id){
+        ownerService.deleteOwnerById(id);
+        return "redirect:/owners";
     }
-
-    @PostMapping("{id}/edit-owner")
-    public  String editOwner(@ModelAttribute Owner owner, @PathVariable Long id){
-        //Optional<Owner> ownerId=ownerService.findOwnerBySsn(owner.getSsn());
-        ownerService.updateOwner(owner,id);
-        return  "redirect:/owners";
-    }
-
-
 }

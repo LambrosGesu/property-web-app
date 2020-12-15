@@ -82,8 +82,7 @@
         crossorigin="anonymous"></script>
 <script src="https://unpkg.com/feather-icons/dist/feather.min.js"></script>
 
-<script src="/js/main.js"></script>
-<script src="/js/modal.js"></script>
+<script src="/js/modal_repair_delete.js"></script>
 </body>
 
 </html>
