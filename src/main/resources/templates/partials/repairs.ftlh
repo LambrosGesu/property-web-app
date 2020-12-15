@@ -25,26 +25,26 @@
 
     <tbody>
     <#list repairs as repair>
-    <tr data-id="${repair.id}">
-        <td>${repair.id}</td>
-        <td>${repair.repairDate}</td>
-        <td>${repair.status}</td>
-        <td>${repair.jobType}</td>
-        <td>${repair.price}</td>
-        <td>${repair.address}</td>
-        <td>${repair.description}</td>
-        <td>${repair.owner.firstname} ${repair.owner.lastname}</td>
-        <td class="text-center">
-            <a href="/edit-repair/${repair.id}">
-                <span data-feather="tool"></span>
-            </a>
-        </td>
-        <td class="text-center">
-            <a href="#" data-toggle="modal" data-target="#remove">
-                <span data-feather="x"></span>
-            </a>
-        </td>
-    </tr>
+        <tr data-id="${repair.id}">
+            <td>${repair.id}</td>
+            <td>${repair.repairDate}</td>
+            <td>${repair.status}</td>
+            <td>${repair.jobType}</td>
+            <td>${repair.price}</td>
+            <td>${repair.address}</td>
+            <td>${repair.description}</td>
+            <td>${repair.owner.firstname} ${repair.owner.lastname}</td>
+            <td class="text-center">
+                <a href="/edit-repair/${repair.id}">
+                    <span data-feather="tool"></span>
+                </a>
+            </td>
+            <td class="text-center">
+                <a href="#" data-toggle="modal" data-target="#remove">
+                    <span data-feather="x"></span>
+                </a>
+            </td>
+        </tr>
     </#list>
     </tbody>
 </table>
