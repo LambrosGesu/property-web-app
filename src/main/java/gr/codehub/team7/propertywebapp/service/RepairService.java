@@ -1,7 +1,7 @@
 package gr.codehub.team7.propertywebapp.service;
 
 import gr.codehub.team7.propertywebapp.domain.Repair;
-import gr.codehub.team7.propertywebapp.forms.RepairSearchForm;
+import gr.codehub.team7.propertywebapp.forms.EditRepairForm;
 
 import java.time.LocalDate;
 import java.util.List;
@@ -17,15 +17,15 @@ public interface RepairService {
 
     List<Repair> findByRepairDateBetween(LocalDate date1, LocalDate date2);
 
+    Optional<Repair> findById(Long id);
+
     Repair insertRepair(Repair repair);
 
-    Repair updateRepair(Repair repair, Long id);
+    Repair updateRepair(EditRepairForm repair, Long id);
 
     List<Repair> findByOwnerSSN(String SSN);
 
     List<Repair> findByOwnerId(Long id);
-
-    List<Repair> findBySearchForm(RepairSearchForm form);
 
     void deleteRepairById(Long id);
 

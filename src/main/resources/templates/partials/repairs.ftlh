@@ -35,7 +35,7 @@
         <td>${repair.description}</td>
         <td>${repair.owner.firstname} ${repair.owner.lastname}</td>
         <td class="text-center">
-            <a href="/edit-repair/${repair.id}">
+            <a href="${repair.id}/editrepair">
                 <span data-feather="tool"></span>
             </a>
         </td>

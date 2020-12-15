@@ -3,25 +3,29 @@ package gr.codehub.team7.propertywebapp.service;
 import gr.codehub.team7.propertywebapp.domain.Owner;
 import gr.codehub.team7.propertywebapp.domain.Repair;
 import gr.codehub.team7.propertywebapp.enums.Status;
-import gr.codehub.team7.propertywebapp.forms.RepairSearchForm;
+import gr.codehub.team7.propertywebapp.forms.EditRepairForm;
+import gr.codehub.team7.propertywebapp.mappers.RepairFormToRepairMapper;
 import gr.codehub.team7.propertywebapp.repository.RepairRepository;
-import jdk.swing.interop.SwingInterOpUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
-import java.util.*;
+import java.util.Comparator;
+import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
-import java.util.stream.Stream;
-
 
 @Service
 public class RepairServiceImpl implements RepairService{
 
     @Autowired
     private RepairRepository repairRepository;
+
     @Autowired
     private OwnerService ownerService;
+
+    @Autowired
+    private RepairFormToRepairMapper repairMapper;
 
     @Override
     public List<Repair> findAll() {
@@ -51,13 +55,22 @@ public class RepairServiceImpl implements RepairService{
     }
 
     @Override
+    public Optional<Repair> findById(Long id) {
+        return repairRepository.findById(id);
+    }
+
+    @Override
     public Repair insertRepair(Repair repair) {
         return repairRepository.save(repair);
     }
 
     @Override
-    public Repair updateRepair(Repair repair, Long id) {
+    public Repair updateRepair(EditRepairForm repairform, Long id) {
+
+        Owner owner= ownerService.findOwnerBySsn(repairform.getOwner()).get();
+
         if(repairRepository.findById(id).isPresent()){
+            Repair repair=repairMapper.map(repairform,owner);
             repair.setId(id);
             return repairRepository.save(repair);
         }
@@ -87,29 +100,6 @@ public class RepairServiceImpl implements RepairService{
         }
     }
 
-    @Override
-    public List<Repair> findBySearchForm(RepairSearchForm form) {
-        List<Repair> searchResults = null;
-        if (form.getRepairDate() != "") {
-            searchResults = findByRepairDate(LocalDate.parse(form.getRepairDate()));
-        }
-        if (form.getSSN() != "") {
-            if (searchResults != null) {
-                searchResults.retainAll(findByOwnerSSN(form.getSSN()));
-            } else {
-                searchResults = findByOwnerSSN(form.getSSN());
-            }
-        }
-        if (form.getBetweenDate1() != "" && form.getBetweenDate2() != "") {
-            if (searchResults != null) {
-                searchResults.retainAll(findByRepairDateBetween(LocalDate.parse(form.getBetweenDate1()), LocalDate.parse(form.getBetweenDate2())));
-            } else {
-                searchResults = findByOwnerSSN(form.getSSN());
-            }
-        }
-        return searchResults;
-
-    }
 
     @Override
     public void deleteRepairById(Long id) {
