@@ -39,7 +39,7 @@
                 </a>
             </td>
             <td class="text-center">
-                <a href="#" data-toggle="modal" data-target="#remove">
+                <a href="#" data-toggle="modal" data-target="#remove_owner">
                     <span data-feather="x"></span>
                 </a>
             </td>
@@ -48,6 +48,27 @@
     </tbody>
 </table>
 
+<div id="remove_owner" class="modal" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Owner</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <p>Are you sure?</p>
+            </div>
+            <div class="modal-footer">
+                <form method="post" id="deleteForm_owner">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                    <button type="submit" class="btn btn-danger">Delete</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
 
 
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
@@ -57,7 +78,7 @@
         integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx"
         crossorigin="anonymous"></script>
 <script src="https://unpkg.com/feather-icons/dist/feather.min.js"></script>
-
+<script src="/js/modal_owner_delete.js"></script>
 </body>
 
 </html>

@@ -9,6 +9,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 @Controller
@@ -33,6 +34,12 @@ public class OwnerController {
     @PostMapping("/owner/create")
     public String createOwnerPost(Model model, @ModelAttribute Owner owner){
         ownerService.insertOwner(owner);
+        return "redirect:/owners";
+    }
+
+    @PostMapping("/owner/{id}/delete")
+    public  String deleteOwner(@PathVariable Long id){
+        ownerService.deleteOwnerById(id);
         return "redirect:/owners";
     }
 }

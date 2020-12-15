@@ -50,7 +50,7 @@ public class Owner {
 
     @JsonIgnore
     //@JsonBackReference
-    @OneToMany(mappedBy = "owner", targetEntity = Repair.class)
+    @OneToMany(mappedBy = "owner", targetEntity = Repair.class, cascade = {CascadeType.REMOVE})
     private List<Repair> repairs;
 
     public Owner(String ssn, String firstname, String lastname, String address, String phone_number, String email, String password, PropertyType propertyType, boolean isAdmin, List<Repair> repairs) {
