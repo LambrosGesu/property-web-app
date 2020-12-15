@@ -3,13 +3,16 @@ package gr.codehub.team7.propertywebapp.controller.admin;
 import gr.codehub.team7.propertywebapp.domain.Owner;
 import gr.codehub.team7.propertywebapp.enums.PropertyType;
 import gr.codehub.team7.propertywebapp.service.OwnerService;
-import gr.codehub.team7.propertywebapp.service.RepairService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.stream.Collectors;
 
 @Controller
 public class OwnerController {
@@ -34,5 +37,24 @@ public class OwnerController {
     public String createOwnerPost(Model model, @ModelAttribute Owner owner){
         ownerService.insertOwner(owner);
         return "redirect:/owners";
+    }
+    @GetMapping("/searchOwner")
+    public String searchOwner(){
+//        model.addAttribute("searchOwnerForm", new SearchOwnerForm());
+        return "searchowner";
+    }
+    @PostMapping("/searchOwner")
+    public String searchOwner(Owner owner, Model model){
+        List<Owner> owners = new ArrayList<>();
+        if(owner.getSsn() !=""){
+            owners.add(ownerService.findOwnerBySsn(owner.getSsn()).get());
+        }
+        if(owner.getEmail() !=""){
+            owners.add(ownerService.findOwnerByEmail(owner.getEmail()).get());
+        }
+        if (!owners.isEmpty()){
+            model.addAttribute("owners", owners.stream().distinct().collect(Collectors.toList()));
+        }
+        return "searchowner";
     }
 }

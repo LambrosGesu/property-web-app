@@ -18,4 +18,8 @@ public interface OwnerService {
     void deleteOwnerById(Long id);
 
     Optional<Owner> findOwnerById(Long id);
+
+//    List<OwnerModel> findOwnerBySsn(String ssn);
+
+//    List<Owner> findOwnerByEmail(String email);
 }
