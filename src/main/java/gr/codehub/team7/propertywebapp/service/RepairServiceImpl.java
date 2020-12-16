@@ -7,6 +7,7 @@ import gr.codehub.team7.propertywebapp.forms.EditRepairForm;
 import gr.codehub.team7.propertywebapp.forms.RepairSearchForm;
 import gr.codehub.team7.propertywebapp.mappers.RepairFormToRepairMapper;
 import gr.codehub.team7.propertywebapp.repository.RepairRepository;
+import jdk.swing.interop.SwingInterOpUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -15,6 +16,8 @@ import java.util.Comparator;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
+
 
 @Service
 public class RepairServiceImpl implements RepairService{
@@ -43,7 +46,6 @@ public class RepairServiceImpl implements RepairService{
                 .collect(Collectors.toList());
 
     }
-
     @Override
     public List<Repair> findByRepairDate(LocalDate date) {
         return repairRepository.findByRepairDate(date);
@@ -66,9 +68,7 @@ public class RepairServiceImpl implements RepairService{
 
     @Override
     public Repair updateRepair(EditRepairForm repairform, Long id) {
-
         Owner owner= ownerService.findOwnerBySsn(repairform.getOwner()).get();
-
         if(repairRepository.findById(id).isPresent()){
             Repair repair=repairMapper.map(repairform,owner);
             repair.setId(id);
@@ -100,6 +100,29 @@ public class RepairServiceImpl implements RepairService{
         }
     }
 
+    @Override
+    public List<Repair> findBySearchForm(RepairSearchForm form) {
+        List<Repair> searchResults = null;
+        if (form.getRepairDate() != "") {
+            searchResults = findByRepairDate(LocalDate.parse(form.getRepairDate()));
+        }
+        if (form.getSSN() != "") {
+            if (searchResults != null) {
+                searchResults.retainAll(findByOwnerSSN(form.getSSN()));
+            } else {
+                searchResults = findByOwnerSSN(form.getSSN());
+            }
+        }
+        if (form.getBetweenDate1() != "" && form.getBetweenDate2() != "") {
+            if (searchResults != null) {
+                searchResults.retainAll(findByRepairDateBetween(LocalDate.parse(form.getBetweenDate1()), LocalDate.parse(form.getBetweenDate2())));
+            } else {
+                searchResults = findByOwnerSSN(form.getSSN());
+            }
+        }
+        return searchResults;
+
+    }
 
     @Override
     public void deleteRepairById(Long id) {
