@@ -38,6 +38,8 @@ public class OwnerController {
     @PostMapping("/owner/create")
     public String createOwnerPost(Model model, @ModelAttribute Owner owner){
         ownerService.insertOwner(owner);
+        System.out.println("didi it? ------------------------");
+        System.out.println("didi it? ------------------------");
         return "redirect:/owners";
     }
 
