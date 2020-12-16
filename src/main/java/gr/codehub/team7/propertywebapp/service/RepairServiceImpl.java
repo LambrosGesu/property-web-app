@@ -4,6 +4,7 @@ import gr.codehub.team7.propertywebapp.domain.Owner;
 import gr.codehub.team7.propertywebapp.domain.Repair;
 import gr.codehub.team7.propertywebapp.enums.Status;
 import gr.codehub.team7.propertywebapp.forms.EditRepairForm;
+import gr.codehub.team7.propertywebapp.forms.RepairSearchForm;
 import gr.codehub.team7.propertywebapp.mappers.RepairFormToRepairMapper;
 import gr.codehub.team7.propertywebapp.repository.RepairRepository;
 import org.springframework.beans.factory.annotation.Autowired;
