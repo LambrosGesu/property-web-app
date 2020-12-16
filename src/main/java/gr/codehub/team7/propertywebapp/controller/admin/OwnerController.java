@@ -11,10 +11,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Controller
 public class OwnerController {
@@ -38,8 +37,6 @@ public class OwnerController {
     @PostMapping("/owner/create")
     public String createOwnerPost(Model model, @ModelAttribute Owner owner){
         ownerService.insertOwner(owner);
-        System.out.println("didi it? ------------------------");
-        System.out.println("didi it? ------------------------");
         return "redirect:/owners";
     }
 
@@ -64,5 +61,25 @@ public class OwnerController {
     public  String deleteOwner(@PathVariable Long id){
         ownerService.deleteOwnerById(id);
         return "redirect:/owners";
+    }
+
+    @GetMapping("/searchOwner")
+    public String searchOwner(){
+//        model.addAttribute("searchOwnerForm", new SearchOwnerForm());
+        return "searchowner";
+    }
+    @PostMapping("/searchOwner")
+    public String searchOwner(Owner owner, Model model){
+        List<Owner> owners = new ArrayList<>();
+        if(owner.getSsn() !=""){
+            owners.add(ownerService.findOwnerBySsn(owner.getSsn()).get());
+        }
+        if(owner.getEmail() !=""){
+            owners.add(ownerService.findOwnerByEmail(owner.getEmail()).get());
+        }
+        if (!owners.isEmpty()){
+            model.addAttribute("owners", owners.stream().distinct().collect(Collectors.toList()));
+        }
+        return "searchowner";
     }
 }
