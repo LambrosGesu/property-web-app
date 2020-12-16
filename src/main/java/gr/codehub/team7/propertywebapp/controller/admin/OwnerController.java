@@ -10,7 +10,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -25,32 +24,48 @@ public class OwnerController {
     @GetMapping("/owners")
     public String getOwners(Model model){
         model.addAttribute("owners",ownerService.getAllOwners());
-        return "showowners";
+        return "pages/showowners";
     }
 
     @GetMapping("/owner/create")
     public String createOwner(Model model){
         model.addAttribute(PROPERTY_TYPE, PropertyType.values());
-        return "createowner";
+        return "pages/createowner";
     }
 
     @PostMapping("/owner/create")
     public String createOwnerPost(Model model, @ModelAttribute Owner owner){
         ownerService.insertOwner(owner);
-        System.out.println("didi it? ------------------------");
-        System.out.println("didi it? ------------------------");
         return "redirect:/owners";
     }
+
+    @GetMapping("{id}/edit-owner")
+    public String editOwner(Model model, @PathVariable Long id){
+
+           model.addAttribute("owner",ownerService.findOwnerById(id).get());
+           model.addAttribute(PROPERTY_TYPE,PropertyType.values());
+           return "pages/editowner";
+    }
+
+    @PostMapping("{id}/edit-owner")
+    public  String editOwner(@ModelAttribute Owner owner, @PathVariable Long id){
+        //Optional<Owner> ownerId=ownerService.findOwnerBySsn(owner.getSsn());
+        ownerService.updateOwner(owner,id);
+        return  "redirect:/owners";
+    }
+
+
 
     @PostMapping("/owner/{id}/delete")
     public  String deleteOwner(@PathVariable Long id){
         ownerService.deleteOwnerById(id);
         return "redirect:/owners";
     }
+
     @GetMapping("/searchOwner")
     public String searchOwner(){
 //        model.addAttribute("searchOwnerForm", new SearchOwnerForm());
-        return "searchowner";
+        return "pages/searchowner";
     }
     @PostMapping("/searchOwner")
     public String searchOwner(Owner owner, Model model){
@@ -64,6 +79,6 @@ public class OwnerController {
         if (!owners.isEmpty()){
             model.addAttribute("owners", owners.stream().distinct().collect(Collectors.toList()));
         }
-        return "searchowner";
+        return "pages/searchowner";
     }
 }
