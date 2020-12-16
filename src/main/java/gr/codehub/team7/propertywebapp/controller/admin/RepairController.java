@@ -72,4 +72,10 @@ public class RepairController {
         repairService.updateRepair(repair,id);
         return "redirect:/repairs";
     }
+
+    @PostMapping("/repair/{id}/delete")
+    public  String deleteRepair(@PathVariable Long id){
+        repairService.deleteRepairById(id);
+        return "redirect:/repairs";
+    }
 }

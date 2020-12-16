@@ -45,7 +45,7 @@ public class Repair {
 
     @JsonIgnore // CAUTION NEEDS CHANGE
     @JsonManagedReference
-    @ManyToOne(optional = false, cascade = {CascadeType.MERGE, CascadeType.REFRESH,CascadeType.REMOVE})
+    @ManyToOne(optional = false, cascade = {CascadeType.MERGE, CascadeType.REFRESH}) ///, CascadeType.REMOVE
     @JoinColumn(name = "owner_id")
     private Owner owner;
 

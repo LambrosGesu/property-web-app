@@ -26,6 +26,5 @@
 </div>
 
 <#include "./partials/scripts.ftlh">
-
 </body>
 </html>

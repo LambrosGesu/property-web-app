@@ -25,30 +25,53 @@
 
     <tbody>
     <#list repairs as repair>
-    <tr data-id="${repair.id}">
-        <td>${repair.id}</td>
-        <td>${repair.repairDate}</td>
-        <td>${repair.status}</td>
-        <td>${repair.jobType}</td>
-        <td>${repair.price}</td>
-        <td>${repair.address}</td>
-        <td>${repair.description}</td>
-        <td>${repair.owner.firstname} ${repair.owner.lastname}</td>
-        <td class="text-center">
-            <a href="${repair.id}/editrepair">
-                <span data-feather="tool"></span>
-            </a>
-        </td>
-        <td class="text-center">
-            <a href="#" data-toggle="modal" data-target="#remove">
-                <span data-feather="x"></span>
-            </a>
-        </td>
-    </tr>
+        <tr data-id="${repair.id}">
+            <td>${repair.id}</td>
+            <td>${repair.repairDate}</td>
+            <td>${repair.status}</td>
+            <td>${repair.jobType}</td>
+            <td>${repair.price}</td>
+            <td>${repair.address}</td>
+            <td>${repair.description}</td>
+            <td>${repair.owner.firstname} ${repair.owner.lastname}</td>
+            <td class="text-center">
+                <a href="/edit-repair/${repair.id}">
+                    <span data-feather="tool"></span>
+                </a>
+            </td>
+            <td class="text-center">
+                <a href="#" data-toggle="modal" data-target="#remove">
+                    <span data-feather="x"></span>
+                </a>
+            </td>
+        </tr>
     </#list>
     </tbody>
 </table>
 
+<div id="remove" class="modal" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Repair</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <p>Are you sure?</p>
+            </div>
+            <div class="modal-footer">
+                <form method="post" id="deleteForm">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                    <button type="submit" class="btn btn-danger">Delete</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+</div>
 
 
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
@@ -59,6 +82,7 @@
         crossorigin="anonymous"></script>
 <script src="https://unpkg.com/feather-icons/dist/feather.min.js"></script>
 
+<script src="/js/modal_repair_delete.js"></script>
 </body>
 
 </html>
