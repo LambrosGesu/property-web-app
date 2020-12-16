@@ -3,7 +3,6 @@ package gr.codehub.team7.propertywebapp.controller.admin;
 import gr.codehub.team7.propertywebapp.domain.Owner;
 import gr.codehub.team7.propertywebapp.enums.PropertyType;
 import gr.codehub.team7.propertywebapp.service.OwnerService;
-import gr.codehub.team7.propertywebapp.service.RepairService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -25,13 +24,13 @@ public class OwnerController {
     @GetMapping("/owners")
     public String getOwners(Model model){
         model.addAttribute("owners",ownerService.getAllOwners());
-        return "showowners";
+        return "pages/showowners";
     }
 
     @GetMapping("/owner/create")
     public String createOwner(Model model){
         model.addAttribute(PROPERTY_TYPE, PropertyType.values());
-        return "createowner";
+        return "pages/createowner";
     }
 
     @PostMapping("/owner/create")
@@ -45,7 +44,7 @@ public class OwnerController {
 
            model.addAttribute("owner",ownerService.findOwnerById(id).get());
            model.addAttribute(PROPERTY_TYPE,PropertyType.values());
-           return "editowner";
+           return "pages/editowner";
     }
 
     @PostMapping("{id}/edit-owner")
@@ -66,7 +65,7 @@ public class OwnerController {
     @GetMapping("/searchOwner")
     public String searchOwner(){
 //        model.addAttribute("searchOwnerForm", new SearchOwnerForm());
-        return "searchowner";
+        return "pages/searchowner";
     }
     @PostMapping("/searchOwner")
     public String searchOwner(Owner owner, Model model){
@@ -80,6 +79,6 @@ public class OwnerController {
         if (!owners.isEmpty()){
             model.addAttribute("owners", owners.stream().distinct().collect(Collectors.toList()));
         }
-        return "searchowner";
+        return "pages/searchowner";
     }
 }

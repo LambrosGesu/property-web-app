@@ -15,8 +15,6 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
-import java.text.DecimalFormat;
-
 @Controller
 public class RepairController {
     private static final String REPAIRS_LIST = "repairs";
@@ -29,7 +27,7 @@ public class RepairController {
     @GetMapping("/repairs")
     public String getRepairs(Model model){
         model.addAttribute("repairs", repairService.findAll());
-        return "showrepairs";
+        return "pages/showrepairs";
     }
 
     @GetMapping("/repair/create")
@@ -37,7 +35,7 @@ public class RepairController {
         model.addAttribute("owners",ownerService.getAllOwners());
         model.addAttribute("status", Status.values());
         model.addAttribute("jobTypes", JobType.values());
-        return "createrepair";
+        return "pages/createrepair";
     }
 
     @GetMapping("/repairs/search")
@@ -63,7 +61,7 @@ public class RepairController {
         model.addAttribute("jobTypes",JobType.values());
         model.addAttribute("repair",repairService.findById(id).get());
         model.addAttribute("owners",ownerService.getAllOwners());
-        return "editrepair";
+        return "pages/editrepair";
     }
 
     @PostMapping("{id}/editrepair")

@@ -17,15 +17,6 @@
                     Show
                 </a>
             </li>
-
-            <li class="nav-item">
-                <a class="nav-link" href="./info">
-                    <span data-feather="search"></span>
-                    Search
-                </a>
-            </li>
-
-
             <li class="nav-item">
                 <a class="nav-link" href="./info">
                     <span data-feather="info"></span>
