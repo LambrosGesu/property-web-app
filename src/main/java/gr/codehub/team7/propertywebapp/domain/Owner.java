@@ -3,6 +3,7 @@ package gr.codehub.team7.propertywebapp.domain;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import gr.codehub.team7.propertywebapp.enums.PropertyType;
+import gr.codehub.team7.propertywebapp.enums.Role;
 
 import javax.persistence.*;
 import java.util.List;
@@ -45,15 +46,16 @@ public class Owner {
     @Column(name = "property_type")
     private PropertyType propertyType;
 
-    @Column(name = "isAdmin")
-    private boolean isAdmin;
+    @Enumerated(EnumType.STRING)
+    @Column(name = "role")
+    private Role role;
 
     @JsonIgnore
     //@JsonBackReference
     @OneToMany(mappedBy = "owner", targetEntity = Repair.class, cascade = {CascadeType.REMOVE})
     private List<Repair> repairs;
 
-    public Owner(String ssn, String firstname, String lastname, String address, String phone_number, String email, String password, PropertyType propertyType, boolean isAdmin, List<Repair> repairs) {
+    public Owner(String ssn, String firstname, String lastname, String address, String phone_number, String email, String password, PropertyType propertyType, Role role, List<Repair> repairs) {
         this.ssn = ssn;
         this.firstname = firstname;
         this.lastname = lastname;
@@ -62,7 +64,7 @@ public class Owner {
         this.email = email;
         this.password = password;
         this.propertyType = propertyType;
-        this.isAdmin=isAdmin;
+        this.role=role;
         this.repairs = repairs;
     }
 
@@ -142,13 +144,18 @@ public class Owner {
         this.propertyType = propertyType;
     }
 
-    public boolean isAdmin() {
-        return isAdmin;
-    }
+//    public Role isAdmin() {
+//        return role;
+//    }
+//
+//    public void setAdmin(Role admin) {
+//        this.role = role;
+//    }
 
-    public void setAdmin(boolean admin) {
-        isAdmin = admin;
-    }
+
+    public Role getRole() { return role; }
+
+    public void setRole(Role role) { this.role = role; }
 
     public List<Repair> getRepairs() {
         return repairs;
@@ -170,7 +177,7 @@ public class Owner {
                 ", email='" + email + '\'' +
                 ", password='" + password + '\'' +
                 ", propertyType=" + propertyType +
-                ", isAdmin=" + isAdmin +
+                ", isAdmin=" + role +
                 '}';
     }
 }

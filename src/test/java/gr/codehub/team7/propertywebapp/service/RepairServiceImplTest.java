@@ -4,6 +4,7 @@ import gr.codehub.team7.propertywebapp.domain.Owner;
 import gr.codehub.team7.propertywebapp.domain.Repair;
 import gr.codehub.team7.propertywebapp.enums.JobType;
 import gr.codehub.team7.propertywebapp.enums.PropertyType;
+import gr.codehub.team7.propertywebapp.enums.Role;
 import gr.codehub.team7.propertywebapp.enums.Status;
 import gr.codehub.team7.propertywebapp.repository.RepairRepository;
 import org.apache.tomcat.jni.Local;
@@ -38,7 +39,7 @@ class RepairServiceImplTest {
     @Test
     @DisplayName("Test findByRepairDate:")
     void findByRepairDate() {
-        Owner owner = new Owner("1234567","kirios","xi","downthereinmexico","6999999999","kiriosx@","xxxx", PropertyType.APPARTMENT,false,null);
+        Owner owner = new Owner("1234567","kirios","xi","downthereinmexico","6999999999","kiriosx@","xxxx", PropertyType.APPARTMENT, Role.USER,null);
         Repair repair1 = new Repair(LocalDate.of(2020,12,1), Status.PENDING, JobType.ELECTRICAL,600.23,"mexicocity","neededcomenewlights",owner);
         Repair repair2 = new Repair(LocalDate.of(2020,12,1), Status.PENDING, JobType.ELECTRICAL,600.23,"mexicocity","neededcomenewlights",owner);
 
@@ -66,7 +67,7 @@ class RepairServiceImplTest {
     @Test
     @DisplayName("Test findByRepairDateBetween:")
     void findByRepairDateBetween() {
-        Owner owner = new Owner("1234567","kirios","xi","downthereinmexico","6999999999","kiriosx@","xxxx", PropertyType.APPARTMENT,false,null);
+        Owner owner = new Owner("1234567","kirios","xi","downthereinmexico","6999999999","kiriosx@","xxxx", PropertyType.APPARTMENT,Role.USER,null);
         Repair repair1 = new Repair(LocalDate.of(2020,12,1), Status.PENDING, JobType.ELECTRICAL,600.23,"mexicocity","neededcomenewlights",owner);
         Repair repair2 = new Repair(LocalDate.of(2014,7,7), Status.PENDING, JobType.ELECTRICAL,600.23,"mexicocity","neededcomenewlights",owner);
 
@@ -82,7 +83,7 @@ class RepairServiceImplTest {
     @Test
     @DisplayName("Test findByOwnerSSN:")
     void findByOwnerSSN() {
-        Owner owner = new Owner("1234567","kirios","xi","downthereinmexico","6999999999","kiriosx@","xxxx", PropertyType.APPARTMENT,false,null);
+        Owner owner = new Owner("1234567","kirios","xi","downthereinmexico","6999999999","kiriosx@","xxxx", PropertyType.APPARTMENT,Role.USER,null);
         Repair repair1 = new Repair(LocalDate.of(2020,12,1), Status.PENDING, JobType.ELECTRICAL,600.23,"mexicocity","neededSomenewlights",owner);
 
         doReturn(Optional.of(owner)).when(ownerService).findOwnerBySsn("1234567");

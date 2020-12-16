@@ -4,6 +4,7 @@ import gr.codehub.team7.propertywebapp.domain.Owner;
 import gr.codehub.team7.propertywebapp.domain.Repair;
 import gr.codehub.team7.propertywebapp.enums.JobType;
 import gr.codehub.team7.propertywebapp.enums.PropertyType;
+import gr.codehub.team7.propertywebapp.enums.Role;
 import gr.codehub.team7.propertywebapp.enums.Status;
 import gr.codehub.team7.propertywebapp.repository.OwnerRepository;
 import org.junit.jupiter.api.Assertions;
@@ -35,7 +36,7 @@ class OwnerServiceImplTest {
     @Test
     @DisplayName("Test findOwnerByEmail:")
     void findOwnerByEmail() {
-        Owner owner = new Owner("1234567","kirios","xi","downthereinmexico","6999999999","kiriosx@","xxxx", PropertyType.APPARTMENT,false,null);
+        Owner owner = new Owner("1234567","kirios","xi","downthereinmexico","6999999999","kiriosx@","xxxx", PropertyType.APPARTMENT, Role.USER,null);
 
         doReturn(Optional.of(owner)).when(ownerRepository).findOwnerByEmail("kiriosx@");
         Optional<Owner> returnedOwners = ownerService.findOwnerByEmail("kiriosx@");
@@ -48,7 +49,7 @@ class OwnerServiceImplTest {
     @Test
     @DisplayName("Test findOwnerBySSN")
     void findOwnerBySsn() {
-        Owner owner = new Owner("1234567","kirios","xi","downthereinmexico","6999999999","kiriosx@","xxxx", PropertyType.APPARTMENT,false,null);
+        Owner owner = new Owner("1234567","kirios","xi","downthereinmexico","6999999999","kiriosx@","xxxx", PropertyType.APPARTMENT,Role.USER,null);
 
         doReturn(Optional.of(owner)).when(ownerRepository).findOwnerBySsn("1234567");
         Optional<Owner> returnedOwners = ownerService.findOwnerBySsn("1234567");
