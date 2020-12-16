@@ -77,5 +77,6 @@ public class RepairController {
     public  String deleteRepair(@PathVariable Long id){
         repairService.deleteRepairById(id);
         return "redirect:/repairs";
+        //for commit
     }
 }
