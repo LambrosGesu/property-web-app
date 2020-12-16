@@ -3,6 +3,8 @@ package gr.codehub.team7.propertywebapp.controller.admin;
 import gr.codehub.team7.propertywebapp.domain.Repair;
 import gr.codehub.team7.propertywebapp.enums.JobType;
 import gr.codehub.team7.propertywebapp.enums.Status;
+import gr.codehub.team7.propertywebapp.forms.EditRepairForm;
+import gr.codehub.team7.propertywebapp.forms.RepairSearchForm;
 import gr.codehub.team7.propertywebapp.service.OwnerService;
 import gr.codehub.team7.propertywebapp.service.RepairService;
 import org.springframework.beans.factory.annotation.Autowired;
