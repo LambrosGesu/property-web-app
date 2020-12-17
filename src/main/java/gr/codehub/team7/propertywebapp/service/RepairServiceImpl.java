@@ -5,11 +5,9 @@ import gr.codehub.team7.propertywebapp.domain.Repair;
 import gr.codehub.team7.propertywebapp.enums.Status;
 import gr.codehub.team7.propertywebapp.forms.EditRepairForm;
 import gr.codehub.team7.propertywebapp.forms.RepairSearchForm;
-import gr.codehub.team7.propertywebapp.mappers.OnwerModelToOwnerMapper;
 import gr.codehub.team7.propertywebapp.mappers.RepairFormToRepairMapper;
-import gr.codehub.team7.propertywebapp.model.OwnerModel;
+import gr.codehub.team7.propertywebapp.repository.OwnerRepository;
 import gr.codehub.team7.propertywebapp.repository.RepairRepository;
-import jdk.swing.interop.SwingInterOpUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -18,19 +16,17 @@ import java.util.Comparator;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 
 @Service
 public class RepairServiceImpl implements RepairService{
-    @Autowired
-    private OnwerModelToOwnerMapper ownerModelToOwner;
+
 
     @Autowired
     private RepairRepository repairRepository;
 
     @Autowired
-    private OwnerService ownerService;
+    private OwnerRepository ownerRepository;
 
     @Autowired
     private RepairFormToRepairMapper repairMapper;
@@ -72,7 +68,7 @@ public class RepairServiceImpl implements RepairService{
 
     @Override
     public Repair updateRepair(EditRepairForm repairform, Long id) {
-        Owner owner= ownerModelToOwner.map(ownerService.findOwnerBySsn(repairform.getOwner()).get());
+        Owner owner= ownerRepository.findOwnerBySsn(repairform.getOwner()).get();
         if(repairRepository.findById(id).isPresent()){
             Repair repair=repairMapper.map(repairform,owner);
             repair.setId(id);
@@ -83,10 +79,10 @@ public class RepairServiceImpl implements RepairService{
 
     @Override
     public List<Repair> findByOwnerSSN(String SSN) {
-        Optional<OwnerModel> ownermodel = ownerService.findOwnerBySsn(SSN);
-        Owner owner= ownerModelToOwner.map(ownermodel.get());
-        if(ownermodel.isPresent()){
-            return repairRepository.findByOwner(owner);
+
+        Optional<Owner> owner= ownerRepository.findOwnerBySsn(SSN);
+        if(owner.isPresent()){
+            return repairRepository.findByOwner(owner.get());
         }
         else{
             return null; //this needs an exception implementation
@@ -95,11 +91,11 @@ public class RepairServiceImpl implements RepairService{
 
     @Override
     public List<Repair> findByOwnerId(Long id) {
-        Optional<OwnerModel> ownerModel = ownerService.findOwnerById(id);
-        Owner owner= ownerModelToOwner.map(ownerModel.get());
-        if(ownerModel.isPresent())
+        Optional<Owner> owner = ownerRepository.findById(id);
+
+        if(owner.isPresent())
         {
-            return repairRepository.findByOwner(owner);
+            return repairRepository.findByOwner(owner.get());
         }
         else{
             return  null;
