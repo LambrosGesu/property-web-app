@@ -70,4 +70,4 @@
         crossorigin="anonymous"></script>
 <script src="https://unpkg.com/feather-icons/dist/feather.min.js"></script>
 
-<script src="/static/js/modal_repair_delete.js"></script>
+<script src="/js/modal_repair_delete.js"></script>

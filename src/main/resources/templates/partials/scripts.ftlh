@@ -7,6 +7,6 @@
 <script>
     feather.replace();
 </script>
-<script src="/static/js/repairsearchvalidator.js"></script>
-<script src="/static/js/datepicker.js"></script>
+<script src="/js/repairsearchvalidator.js"></script>
+<script src="/js/datepicker.js"></script>
 

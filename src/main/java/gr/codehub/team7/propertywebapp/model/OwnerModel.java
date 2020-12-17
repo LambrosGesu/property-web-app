@@ -5,6 +5,7 @@ import gr.codehub.team7.propertywebapp.enums.PropertyType;
 import gr.codehub.team7.propertywebapp.enums.Role;
 
 import java.util.List;
+import java.util.Objects;
 
 public class OwnerModel {
     private Long id;
@@ -127,5 +128,19 @@ public class OwnerModel {
 
     public void setRepairs(List<Repair> repairs) {
         this.repairs = repairs;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        OwnerModel that = (OwnerModel) o;
+        return ssn.equals(that.ssn) &&
+                email.equals(that.email);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(ssn, email);
     }
 }
