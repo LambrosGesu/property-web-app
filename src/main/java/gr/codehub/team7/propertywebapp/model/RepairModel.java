@@ -1,5 +1,6 @@
 package gr.codehub.team7.propertywebapp.model;
 
+import gr.codehub.team7.propertywebapp.domain.Owner;
 import gr.codehub.team7.propertywebapp.enums.JobType;
 import gr.codehub.team7.propertywebapp.enums.Status;
 
@@ -13,6 +14,7 @@ public class RepairModel {
     private double price;
     private String address;
     private String description;
+    private Owner owner;
     private Long ownerId;
     private String ownerFirstName;
     private String ownerLastName;
@@ -85,6 +87,14 @@ public class RepairModel {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public Owner getOwner() {
+        return owner;
+    }
+
+    public void setOwner(Owner owner) {
+        this.owner = owner;
     }
 
     public Long getOwnerId() {

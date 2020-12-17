@@ -4,20 +4,27 @@ import gr.codehub.team7.propertywebapp.domain.Repair;
 import gr.codehub.team7.propertywebapp.enums.JobType;
 import gr.codehub.team7.propertywebapp.enums.Status;
 import gr.codehub.team7.propertywebapp.forms.EditRepairForm;
+import gr.codehub.team7.propertywebapp.forms.RepairForm;
 import gr.codehub.team7.propertywebapp.forms.RepairSearchForm;
 import gr.codehub.team7.propertywebapp.service.OwnerService;
 import gr.codehub.team7.propertywebapp.service.RepairService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import javax.validation.Valid;
+
 @Controller
 public class RepairController {
     private static final String REPAIRS_LIST = "repairs";
+    private static final String REPAIRS_FORM = "add-repair";
+    public static final String ERROR_MESSAGE = "errorMessage";
+
     @Autowired
     private RepairService repairService;
 
@@ -32,10 +39,25 @@ public class RepairController {
 
     @GetMapping("/repair/create")
     public String createRepair(Model model){
+//        model.addAttribute("owners",ownerService.getAllOwners());
+//        model.addAttribute("status", Status.values());
+//        model.addAttribute("jobTypes", JobType.values());
+        model.addAttribute(REPAIRS_FORM, new RepairForm());
         model.addAttribute("owners",ownerService.getAllOwners());
         model.addAttribute("status", Status.values());
         model.addAttribute("jobTypes", JobType.values());
         return "pages/createrepair";
+    }
+
+    @PostMapping("/repair/create")
+    public String createRepairPost(Model model, @Valid @ModelAttribute(REPAIRS_FORM) RepairForm repairForm,
+                                   BindingResult bindingResult){
+        if(bindingResult.hasErrors()){
+            model.addAttribute(ERROR_MESSAGE, "an error occurred");
+            return "pages/createrepair";
+        }
+        repairService.insertRepair(repairForm);
+        return "redirect:/repairs";
     }
 
     @GetMapping("/repairs/search")
@@ -49,11 +71,11 @@ public class RepairController {
         return "pages/searchRepairs";
     }
 
-    @PostMapping("/repair/create")
-    public String createRepairPost(Model model, @ModelAttribute Repair repair){
-        repairService.insertRepair(repair);
-        return "redirect:/repairs";
-    }
+//    @PostMapping("/repair/create")
+//    public String createRepairPost(Model model, @ModelAttribute Repair repair){
+//        repairService.insertRepair(repair);
+//        return "redirect:/repairs";
+//    }
 
     @GetMapping("{id}/editrepair")
     public String editRepair(Model model, @PathVariable Long id){
