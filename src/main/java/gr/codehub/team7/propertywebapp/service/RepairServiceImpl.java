@@ -9,7 +9,9 @@ import gr.codehub.team7.propertywebapp.forms.RepairSearchForm;
 import gr.codehub.team7.propertywebapp.mappers.RepairFormToRepairMapper;
 import gr.codehub.team7.propertywebapp.mappers.RepairFormToRepairMapperCreate;
 import gr.codehub.team7.propertywebapp.mappers.RepairToRepairModelMapper;
+import gr.codehub.team7.propertywebapp.model.OwnerModel;
 import gr.codehub.team7.propertywebapp.model.RepairModel;
+import gr.codehub.team7.propertywebapp.repository.OwnerRepository;
 import gr.codehub.team7.propertywebapp.repository.RepairRepository;
 import jdk.swing.interop.SwingInterOpUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,6 +33,9 @@ public class RepairServiceImpl implements RepairService{
 
     @Autowired
     private OwnerService ownerService;
+
+    @Autowired
+    private OwnerRepository ownerRepository;
 
     @Autowired
     private RepairFormToRepairMapper repairMapper;
@@ -81,7 +86,7 @@ public class RepairServiceImpl implements RepairService{
 
     @Override
     public Repair updateRepair(EditRepairForm repairform, Long id) {
-        Owner owner= ownerService.findOwnerBySsn(repairform.getOwner()).get();
+        Owner owner= ownerRepository.findOwnerBySsn(repairform.getOwner()).get();
         if(repairRepository.findById(id).isPresent()){
             Repair repair=repairMapper.map(repairform,owner);
             repair.setId(id);
@@ -92,7 +97,7 @@ public class RepairServiceImpl implements RepairService{
 
     @Override
     public List<Repair> findByOwnerSSN(String SSN) {
-        Optional<Owner> owner = ownerService.findOwnerBySsn(SSN);
+        Optional<Owner> owner = ownerRepository.findOwnerBySsn(SSN);
         if(owner.isPresent()){
             return repairRepository.findByOwner(owner.get());
         }
@@ -103,7 +108,8 @@ public class RepairServiceImpl implements RepairService{
 
     @Override
     public List<Repair> findByOwnerId(Long id) {
-        Optional<Owner> owner = ownerService.findOwnerById(id);
+
+        Optional<Owner> owner = ownerRepository.findById(id);
         if(owner.isPresent())
         {
             return repairRepository.findByOwner(owner.get());
