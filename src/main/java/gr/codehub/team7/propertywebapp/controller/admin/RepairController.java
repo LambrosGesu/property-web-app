@@ -23,6 +23,7 @@ import javax.validation.Valid;
 public class RepairController {
     private static final String REPAIRS_LIST = "repairs";
     private static final String REPAIRS_FORM = "add-repair";
+    public static final String ERROR_MESSAGE = "errorMessage";
 
     @Autowired
     private RepairService repairService;
@@ -52,6 +53,7 @@ public class RepairController {
     public String createRepairPost(Model model, @Valid @ModelAttribute(REPAIRS_FORM) RepairForm repairForm,
                                    BindingResult bindingResult){
         if(bindingResult.hasErrors()){
+            model.addAttribute(ERROR_MESSAGE, "an error occurred");
             return "pages/createrepair";
         }
         repairService.insertRepair(repairForm);
