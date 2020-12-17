@@ -29,7 +29,7 @@ public interface RepairService {
 
     List<Repair> findByOwnerId(Long id);
 
-    List<Repair> findBySearchForm(RepairSearchForm form);
+    List<RepairModel> findBySearchForm(RepairSearchForm form);
 
     void deleteRepairById(Long id);
 

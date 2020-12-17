@@ -8,8 +8,8 @@ public class RepairToRepairModelMapper {
     public RepairModel map(Repair repair){
         RepairModel repairModel = new RepairModel();
         //remove id from tables
-
-        repairModel.setRepairDate(repair.getRepairDate()); // this need to be chenaged to string both
+        repairModel.setId(repair.getId());
+        repairModel.setRepairDate(repair.getRepairDate()); // this need to be changed to string both
         //here and in model
         repairModel.setAddress(repair.getAddress());
         repairModel.setDescription(repair.getDescription());

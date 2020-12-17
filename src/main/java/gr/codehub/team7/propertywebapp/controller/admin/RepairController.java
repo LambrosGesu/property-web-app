@@ -5,6 +5,7 @@ import gr.codehub.team7.propertywebapp.enums.JobType;
 import gr.codehub.team7.propertywebapp.enums.Status;
 import gr.codehub.team7.propertywebapp.forms.EditRepairForm;
 import gr.codehub.team7.propertywebapp.forms.RepairSearchForm;
+import gr.codehub.team7.propertywebapp.model.RepairModel;
 import gr.codehub.team7.propertywebapp.service.OwnerService;
 import gr.codehub.team7.propertywebapp.service.RepairService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -47,9 +48,9 @@ public class RepairController {
 
     @PostMapping("/repairs/search")
     public String returnRepairs(@ModelAttribute("repairSearchForm") RepairSearchForm repairSearchForm, Model model) {
-        List<Repair> results = repairService.findBySearchForm(repairSearchForm);
+        List<RepairModel> results = repairService.findBySearchForm(repairSearchForm);
         model.addAttribute("postflag",1);
-        if(results!=null && !results.isEmpty()){model.addAttribute(REPAIRS_LIST,results);}
+        if(!results.isEmpty()){model.addAttribute(REPAIRS_LIST,results);}
         return "pages/searchRepairs";
     }
 

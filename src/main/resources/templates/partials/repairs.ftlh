@@ -21,7 +21,7 @@
             <td>${repair.price}</td>
             <td>${repair.address}</td>
             <td>${repair.description}</td>
-            <td>${repair.ownerFirstname} ${repair.ownerLastname}</td>
+            <td>${repair.ownerFirstName} ${repair.ownerLastName}</td>
             <td class="text-center">
                 <a href="/${repair.id}/editrepair">
                     <span data-feather="tool"></span>
@@ -70,4 +70,4 @@
         crossorigin="anonymous"></script>
 <script src="https://unpkg.com/feather-icons/dist/feather.min.js"></script>
 
-<script src="/js/modal_repair_delete.js"></script>
+<script src="/static/js/modal_repair_delete.js"></script>
