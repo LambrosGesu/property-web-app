@@ -2,6 +2,7 @@ package gr.codehub.team7.propertywebapp.model;
 
 import gr.codehub.team7.propertywebapp.domain.Repair;
 import gr.codehub.team7.propertywebapp.enums.PropertyType;
+import gr.codehub.team7.propertywebapp.enums.Role;
 
 import java.util.List;
 
@@ -14,14 +15,14 @@ public class OwnerModel {
     private String address;
     private String phone_number;
     private String password;
-    private boolean isAdmin;
+    private Role role;
     private PropertyType propertyType;
     private List<Repair> repairs;
 
     public OwnerModel() {
     }
 
-    public OwnerModel(Long id, String firstname, String lastname, String ssn, String email, String address, String phone_number, String password, boolean isAdmin, PropertyType propertyType) {
+    public OwnerModel(Long id, String firstname, String lastname, String ssn, String email, String address, String phone_number, String password, Role role, PropertyType propertyType) {
         this.id = id;
         this.firstname = firstname;
         this.lastname = lastname;
@@ -30,7 +31,7 @@ public class OwnerModel {
         this.address = address;
         this.phone_number = phone_number;
         this.password = password;
-        this.isAdmin = isAdmin;
+        this.role = role;
         this.propertyType = propertyType;
     }
 
@@ -106,13 +107,11 @@ public class OwnerModel {
         this.password = password;
     }
 
-    public boolean isAdmin() {
-        return isAdmin;
+    public Role getRole() {
+        return role;
     }
 
-    public void setAdmin(boolean admin) {
-        isAdmin = admin;
-    }
+    public void setRole(Role role) {  this.role = role; }
 
     public PropertyType getPropertyType() {
         return propertyType;
@@ -120,5 +119,13 @@ public class OwnerModel {
 
     public void setPropertyType(PropertyType propertyType) {
         this.propertyType = propertyType;
+    }
+
+    public List<Repair> getRepairs() {
+        return repairs;
+    }
+
+    public void setRepairs(List<Repair> repairs) {
+        this.repairs = repairs;
     }
 }

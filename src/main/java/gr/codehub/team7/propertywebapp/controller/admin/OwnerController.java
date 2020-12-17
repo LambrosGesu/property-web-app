@@ -2,6 +2,9 @@ package gr.codehub.team7.propertywebapp.controller.admin;
 
 import gr.codehub.team7.propertywebapp.domain.Owner;
 import gr.codehub.team7.propertywebapp.enums.PropertyType;
+import gr.codehub.team7.propertywebapp.forms.OwnerForm;
+import gr.codehub.team7.propertywebapp.forms.SearchOwnerForm;
+import gr.codehub.team7.propertywebapp.model.OwnerModel;
 import gr.codehub.team7.propertywebapp.service.OwnerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -34,8 +37,8 @@ public class OwnerController {
     }
 
     @PostMapping("/owner/create")
-    public String createOwnerPost(Model model, @ModelAttribute Owner owner){
-        ownerService.insertOwner(owner);
+    public String createOwnerPost(Model model, @ModelAttribute OwnerForm ownerForm){
+        ownerService.insertOwner(ownerForm);
         return "redirect:/owners";
     }
 
@@ -48,7 +51,7 @@ public class OwnerController {
     }
 
     @PostMapping("{id}/edit-owner")
-    public  String editOwner(@ModelAttribute Owner owner, @PathVariable Long id){
+    public  String editOwner(@ModelAttribute OwnerForm owner, @PathVariable Long id){
         //Optional<Owner> ownerId=ownerService.findOwnerBySsn(owner.getSsn());
         ownerService.updateOwner(owner,id);
         return  "redirect:/owners";
@@ -68,8 +71,8 @@ public class OwnerController {
         return "pages/searchowner";
     }
     @PostMapping("/searchOwner")
-    public String searchOwner(Owner owner, Model model){
-        List<Owner> owners = new ArrayList<>();
+    public String searchOwner(SearchOwnerForm owner, Model model){
+        List<OwnerModel> owners = new ArrayList<>();
         if(owner.getSsn() !=""){
             owners.add(ownerService.findOwnerBySsn(owner.getSsn()).get());
         }

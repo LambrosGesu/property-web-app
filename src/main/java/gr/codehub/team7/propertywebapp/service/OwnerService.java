@@ -1,6 +1,8 @@
 package gr.codehub.team7.propertywebapp.service;
 
 import gr.codehub.team7.propertywebapp.domain.Owner;
+import gr.codehub.team7.propertywebapp.forms.OwnerForm;
+import gr.codehub.team7.propertywebapp.model.OwnerModel;
 
 import java.util.List;
 import java.util.Optional;
@@ -8,16 +10,16 @@ import java.util.Optional;
 public interface OwnerService {
 
 
-    List<Owner> getAllOwners();
-    Optional<Owner> findOwnerByEmail(String email);
-    Optional<Owner> findOwnerBySsn(String ssn);
+    List<OwnerModel> getAllOwners();
+    Optional<OwnerModel> findOwnerByEmail(String email);
+    Optional<OwnerModel> findOwnerBySsn(String ssn);
 
-    Owner insertOwner(Owner owner);
-    Owner updateOwner(Owner owner, Long id);
+    OwnerModel insertOwner(OwnerForm ownerForm);
+    OwnerModel updateOwner(OwnerForm ownerForm, Long id);
 
     void deleteOwnerById(Long id);
 
-    Optional<Owner> findOwnerById(Long id);
+    Optional<OwnerModel> findOwnerById(Long id);
 
 //    List<OwnerModel> findOwnerBySsn(String ssn);
 

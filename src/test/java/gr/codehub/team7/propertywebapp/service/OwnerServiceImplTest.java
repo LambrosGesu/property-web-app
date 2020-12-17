@@ -6,6 +6,7 @@ import gr.codehub.team7.propertywebapp.enums.JobType;
 import gr.codehub.team7.propertywebapp.enums.PropertyType;
 import gr.codehub.team7.propertywebapp.enums.Role;
 import gr.codehub.team7.propertywebapp.enums.Status;
+import gr.codehub.team7.propertywebapp.model.OwnerModel;
 import gr.codehub.team7.propertywebapp.repository.OwnerRepository;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
@@ -39,7 +40,7 @@ class OwnerServiceImplTest {
         Owner owner = new Owner("1234567","kirios","xi","downthereinmexico","6999999999","kiriosx@","xxxx", PropertyType.APPARTMENT, Role.USER,null);
 
         doReturn(Optional.of(owner)).when(ownerRepository).findOwnerByEmail("kiriosx@");
-        Optional<Owner> returnedOwners = ownerService.findOwnerByEmail("kiriosx@");
+        Optional<OwnerModel> returnedOwners = ownerService.findOwnerByEmail("kiriosx@");
 
 
         // Assert the response
@@ -52,7 +53,7 @@ class OwnerServiceImplTest {
         Owner owner = new Owner("1234567","kirios","xi","downthereinmexico","6999999999","kiriosx@","xxxx", PropertyType.APPARTMENT,Role.USER,null);
 
         doReturn(Optional.of(owner)).when(ownerRepository).findOwnerBySsn("1234567");
-        Optional<Owner> returnedOwners = ownerService.findOwnerBySsn("1234567");
+        Optional<OwnerModel> returnedOwners = ownerService.findOwnerBySsn("1234567");
 
         // Assert the response
         Assertions.assertEquals(Optional.of(owner), returnedOwners, "Not equal lists");
