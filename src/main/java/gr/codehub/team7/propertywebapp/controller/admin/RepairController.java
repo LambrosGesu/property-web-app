@@ -6,6 +6,7 @@ import gr.codehub.team7.propertywebapp.enums.Status;
 import gr.codehub.team7.propertywebapp.forms.EditRepairForm;
 import gr.codehub.team7.propertywebapp.forms.RepairForm;
 import gr.codehub.team7.propertywebapp.forms.RepairSearchForm;
+import gr.codehub.team7.propertywebapp.model.RepairModel;
 import gr.codehub.team7.propertywebapp.service.OwnerService;
 import gr.codehub.team7.propertywebapp.service.RepairService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,6 +19,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import javax.validation.Valid;
+
+import java.util.List;
 
 @Controller
 public class RepairController {
@@ -67,7 +70,9 @@ public class RepairController {
 
     @PostMapping("/repairs/search")
     public String returnRepairs(@ModelAttribute("repairSearchForm") RepairSearchForm repairSearchForm, Model model) {
-        model.addAttribute(REPAIRS_LIST,repairService.findBySearchForm(repairSearchForm));
+        List<RepairModel> results = repairService.findBySearchForm(repairSearchForm);
+        model.addAttribute("postflag",1);
+        if(!results.isEmpty()){model.addAttribute(REPAIRS_LIST,results);}
         return "pages/searchRepairs";
     }
 
@@ -88,7 +93,6 @@ public class RepairController {
 
     @PostMapping("{id}/editrepair")
     public String editRepair(@ModelAttribute EditRepairForm repair, @PathVariable Long id){
-
         repairService.updateRepair(repair,id);
         return "redirect:/repairs";
     }
@@ -97,6 +101,5 @@ public class RepairController {
     public  String deleteRepair(@PathVariable Long id){
         repairService.deleteRepairById(id);
         return "redirect:/repairs";
-        //for commit
     }
 }

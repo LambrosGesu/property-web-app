@@ -19,11 +19,16 @@
                     <#include "../forms/repairSearchForm.ftlh">
                     <br>
                     <br>
-                    <#if repairs??>
-                        <#include "../partials/repairs.ftlh">
+                    <#if postflag??>
+                        <#if repairs??>
+                            <#include "../partials/repairs.ftlh">
+                        <#else>
+                            <h2 class="text-muted">No results found.</h2>
+                        </#if>
                     </#if>
 
-                </div>
+
+                    </div>
             </div>
         </main>
     </div>

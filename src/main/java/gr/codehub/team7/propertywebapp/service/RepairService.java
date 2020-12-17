@@ -12,9 +12,9 @@ import java.util.Optional;
 
 public interface RepairService {
 
-    List<Repair> findAll();
+    List<RepairModel> findAll();
 
-    List<Repair> findFirstTenUninished();
+    List<RepairModel> findFirstTenUnfinished();
 
     List<Repair> findByRepairDate(LocalDate date);
 
@@ -31,7 +31,7 @@ public interface RepairService {
 
     List<Repair> findByOwnerId(Long id);
 
-    List<Repair> findBySearchForm(RepairSearchForm form);
+    List<RepairModel> findBySearchForm(RepairSearchForm form);
 
     void deleteRepairById(Long id);
 

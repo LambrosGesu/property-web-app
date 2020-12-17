@@ -12,17 +12,17 @@ import gr.codehub.team7.propertywebapp.mappers.RepairToRepairModelMapper;
 import gr.codehub.team7.propertywebapp.model.OwnerModel;
 import gr.codehub.team7.propertywebapp.model.RepairModel;
 import gr.codehub.team7.propertywebapp.repository.OwnerRepository;
+import gr.codehub.team7.propertywebapp.mappers.RepairToRepairModelMapper;
+import gr.codehub.team7.propertywebapp.model.RepairModel;
 import gr.codehub.team7.propertywebapp.repository.RepairRepository;
 import jdk.swing.interop.SwingInterOpUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.autoconfigure.security.oauth2.client.reactive.ReactiveOAuth2ClientAutoConfiguration;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
-import java.util.Comparator;
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
 import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 
 @Service
@@ -47,14 +47,21 @@ public class RepairServiceImpl implements RepairService{
     private RepairToRepairModelMapper repairModelMapper;
 
     @Override
-    public List<Repair> findAll() {
-        return repairRepository.findAll();
+    public List<RepairModel> findAll() {
+        return repairRepository
+                .findAll()
+                .stream()
+                .map(repair -> repairModelMapper.map(repair))
+                .collect(Collectors.toList());
     }
 
     @Override
-    public List<Repair> findFirstTenUninished() {
+    public List<RepairModel> findFirstTenUnfinished() {
 
-        return repairRepository.findAll().stream()
+        return repairRepository
+                .findAll()
+                .stream()
+                .map(repair -> repairModelMapper.map(repair))
                 .filter(repair -> !repair.getStatus().equals(Status.FINISHED))
                 .sorted(Comparator.comparing(repair-> repair.getRepairDate()))
                 .limit(10)
@@ -101,6 +108,7 @@ public class RepairServiceImpl implements RepairService{
         if(owner.isPresent()){
             return repairRepository.findByOwner(owner.get());
         }
+
         else{
             return null; //this needs an exception implementation
         }
@@ -120,9 +128,10 @@ public class RepairServiceImpl implements RepairService{
     }
 
     @Override
-    public List<Repair> findBySearchForm(RepairSearchForm form) {
+    public List<RepairModel> findBySearchForm(RepairSearchForm form) {
         List<Repair> searchResults = null;
-        if (form.getRepairDate() != "") {
+
+        if (form.getRepairDate() != "" && form.getRepairDate() != null) {
             searchResults = findByRepairDate(LocalDate.parse(form.getRepairDate()));
         }
         if (form.getSSN() != "") {
@@ -132,15 +141,21 @@ public class RepairServiceImpl implements RepairService{
                 searchResults = findByOwnerSSN(form.getSSN());
             }
         }
-        if (form.getBetweenDate1() != "" && form.getBetweenDate2() != "") {
+        if (form.getBetweenDate1() != "" && form.getBetweenDate1() != null && form.getBetweenDate2() != null && form.getBetweenDate2() != "") {
             if (searchResults != null) {
                 searchResults.retainAll(findByRepairDateBetween(LocalDate.parse(form.getBetweenDate1()), LocalDate.parse(form.getBetweenDate2())));
             } else {
-                searchResults = findByOwnerSSN(form.getSSN());
+                searchResults = findByRepairDateBetween(LocalDate.parse(form.getBetweenDate1()), LocalDate.parse(form.getBetweenDate2()));
             }
         }
-        return searchResults;
 
+        if (searchResults != null) {
+            return searchResults.stream()
+                    .map(repair -> repairModelMapper.map(repair))
+                    .collect(Collectors.toList());
+        } else {
+            return Collections.emptyList();
+        }
     }
 
     @Override

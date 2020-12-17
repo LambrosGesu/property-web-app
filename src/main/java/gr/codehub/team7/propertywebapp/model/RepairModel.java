@@ -20,7 +20,6 @@ public class RepairModel {
     private String ownerLastName;
 
     public RepairModel(){
-
     }
 
     public RepairModel(Long id, LocalDate repairDate, Status status, JobType jobType, double price,String address, String description){

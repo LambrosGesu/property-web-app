@@ -1,10 +1,25 @@
 package gr.codehub.team7.propertywebapp.forms;
 
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.Pattern;
+import javax.validation.constraints.Size;
+
+
 public class RepairSearchForm {
-    String repairDate;
-    String BetweenDate1;
-    String BetweenDate2;
-    String SSN;
+    private static final int SSN_MIN_SIZE = 9;
+    private static final int SSN_MAX_SIZE = 9;
+    private static final String SSN_PATTERN = "^[0-9]*$";
+    private static final String DATE_PATTERN = "[0-9]+-[0-9]+-[0-9]$";
+
+    @Pattern(regexp = DATE_PATTERN, message = "{register.date.pattern.invalid}")
+    private String repairDate;
+    @Pattern(regexp = DATE_PATTERN, message = "{register.date.pattern.invalid}")
+    private String BetweenDate1;
+    @Pattern(regexp = DATE_PATTERN, message = "{register.date.pattern.invalid}")
+    private String BetweenDate2;
+    @Pattern(regexp = SSN_PATTERN, message = "{register.ssn.pattern.invalid}")
+    @Size(min = SSN_MIN_SIZE, max = SSN_MAX_SIZE, message = "{register.ssn.size.invalid}")
+    private String SSN;
 
 
     public String getRepairDate() {
