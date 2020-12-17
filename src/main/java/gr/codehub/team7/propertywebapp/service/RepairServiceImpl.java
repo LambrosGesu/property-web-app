@@ -4,8 +4,12 @@ import gr.codehub.team7.propertywebapp.domain.Owner;
 import gr.codehub.team7.propertywebapp.domain.Repair;
 import gr.codehub.team7.propertywebapp.enums.Status;
 import gr.codehub.team7.propertywebapp.forms.EditRepairForm;
+import gr.codehub.team7.propertywebapp.forms.RepairForm;
 import gr.codehub.team7.propertywebapp.forms.RepairSearchForm;
 import gr.codehub.team7.propertywebapp.mappers.RepairFormToRepairMapper;
+import gr.codehub.team7.propertywebapp.mappers.RepairFormToRepairMapperCreate;
+import gr.codehub.team7.propertywebapp.mappers.RepairToRepairModelMapper;
+import gr.codehub.team7.propertywebapp.model.RepairModel;
 import gr.codehub.team7.propertywebapp.repository.RepairRepository;
 import jdk.swing.interop.SwingInterOpUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,6 +34,12 @@ public class RepairServiceImpl implements RepairService{
 
     @Autowired
     private RepairFormToRepairMapper repairMapper;
+
+    @Autowired
+    private RepairFormToRepairMapperCreate repairMapperCreate;
+
+    @Autowired
+    private RepairToRepairModelMapper repairModelMapper;
 
     @Override
     public List<Repair> findAll() {
@@ -62,9 +72,18 @@ public class RepairServiceImpl implements RepairService{
     }
 
     @Override
-    public Repair insertRepair(Repair repair) {
-        return repairRepository.save(repair);
+    public RepairModel insertRepair(RepairForm repairForm) {
+//        Owner owner=ownerService.findOwnerBySsn(editRepairForm.getOwner()).get();
+        Repair repair=repairMapperCreate.map(repairForm);
+        Repair newRepair=repairRepository.save(repair);
+        return repairModelMapper.map(newRepair);
     }
+
+//    @Override
+//    public Repair insertRepair(Repair repair) {
+//        return repairRepository.save(repair);
+//    }
+
 
     @Override
     public Repair updateRepair(EditRepairForm repairform, Long id) {

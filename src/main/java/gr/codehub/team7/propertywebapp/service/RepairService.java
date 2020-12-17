@@ -2,7 +2,9 @@ package gr.codehub.team7.propertywebapp.service;
 
 import gr.codehub.team7.propertywebapp.domain.Repair;
 import gr.codehub.team7.propertywebapp.forms.EditRepairForm;
+import gr.codehub.team7.propertywebapp.forms.RepairForm;
 import gr.codehub.team7.propertywebapp.forms.RepairSearchForm;
+import gr.codehub.team7.propertywebapp.model.RepairModel;
 
 import java.time.LocalDate;
 import java.util.List;
@@ -20,7 +22,8 @@ public interface RepairService {
 
     Optional<Repair> findById(Long id);
 
-    Repair insertRepair(Repair repair);
+//    Repair insertRepair(Repair repair);
+    RepairModel insertRepair(RepairForm repairForm);
 
     Repair updateRepair(EditRepairForm repair, Long id);
 
