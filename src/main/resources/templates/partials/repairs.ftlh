@@ -1,7 +1,6 @@
 
 <table class="table">
     <thead>
-    <th>ID</th>
     <th>Date</th>
     <th>Status</th>
     <th>Job Type</th>
@@ -16,14 +15,13 @@
     <tbody>
     <#list repairs as repair>
         <tr data-id="${repair.id}">
-            <td>${repair.id}</td>
             <td>${repair.repairDate}</td>
             <td>${repair.status}</td>
             <td>${repair.jobType}</td>
             <td>${repair.price}</td>
             <td>${repair.address}</td>
             <td>${repair.description}</td>
-            <td>${repair.owner.firstname} ${repair.owner.lastname}</td>
+            <td>${repair.ownerFirstname} ${repair.ownerLastname}</td>
             <td class="text-center">
                 <a href="/${repair.id}/editrepair">
                     <span data-feather="tool"></span>

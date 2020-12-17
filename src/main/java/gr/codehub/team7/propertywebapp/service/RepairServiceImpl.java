@@ -6,8 +6,9 @@ import gr.codehub.team7.propertywebapp.enums.Status;
 import gr.codehub.team7.propertywebapp.forms.EditRepairForm;
 import gr.codehub.team7.propertywebapp.forms.RepairSearchForm;
 import gr.codehub.team7.propertywebapp.mappers.RepairFormToRepairMapper;
+import gr.codehub.team7.propertywebapp.mappers.RepairToRepairModelMapper;
+import gr.codehub.team7.propertywebapp.model.RepairModel;
 import gr.codehub.team7.propertywebapp.repository.RepairRepository;
-import jdk.swing.interop.SwingInterOpUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -16,7 +17,6 @@ import java.util.Comparator;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 
 @Service
@@ -31,15 +31,25 @@ public class RepairServiceImpl implements RepairService{
     @Autowired
     private RepairFormToRepairMapper repairMapper;
 
+    @Autowired
+    private RepairToRepairModelMapper repairModelMapper;
+
     @Override
-    public List<Repair> findAll() {
-        return repairRepository.findAll();
+    public List<RepairModel> findAll() {
+        return repairRepository
+                .findAll()
+                .stream()
+                .map(repair -> repairModelMapper.map(repair))
+                .collect(Collectors.toList());
     }
 
     @Override
-    public List<Repair> findFirstTenUninished() {
+    public List<RepairModel> findFirstTenUnfinished() {
 
-        return repairRepository.findAll().stream()
+        return repairRepository
+                .findAll()
+                .stream()
+                .map(repair -> repairModelMapper.map(repair))
                 .filter(repair -> !repair.getStatus().equals(Status.FINISHED))
                 .sorted(Comparator.comparing(repair-> repair.getRepairDate()))
                 .limit(10)
@@ -83,6 +93,7 @@ public class RepairServiceImpl implements RepairService{
         if(owner.isPresent()){
             return repairRepository.findByOwner(owner.get());
         }
+
         else{
             return null; //this needs an exception implementation
         }

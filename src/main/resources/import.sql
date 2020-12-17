@@ -12,10 +12,20 @@ INSERT INTO OWNER (ssn, firstname, lastname, address, phone_number, email, passw
 INSERT INTO OWNER (ssn, firstname, lastname, address, phone_number, email, password, property_type, isAdmin) VALUES ('461789591', 'Katerina', ' Kanellopoulou', 'Akratas 25', '6954123554', 'kk@test.gr', 'kk726925', 'MAISONETTE', 0);
 INSERT INTO OWNER (ssn, firstname, lastname, address, phone_number, email, password, property_type, isAdmin) VALUES ('731435934', 'Vasileios', 'Nikoulis', 'Evoias 11', '6954123554', 'vn@test.gr', 'vn726925', 'MAISONETTE', 0);
 
+INSERT INTO REPAIR (repair_date, status, job_type, price, address, description, owner_id) VALUES ('2019-01-01', 'PENDING', 'PAINTING', 35.5, 'Zakinthou 13', 'This is an Electrical repair', 1);
+INSERT INTO REPAIR (repair_date, status, job_type, price, address, description, owner_id) VALUES ('2020-01-01', 'ONGOING', 'PAINTING', 50, 'Dramas 4', 'This is an Electrical repair', 2);
+INSERT INTO REPAIR (repair_date, status, job_type, price, address, description, owner_id) VALUES ('2020-01-01', 'FINISHED', 'PAINTING', 68.2, 'Zakinthou 13', 'This is an Electrical repair', 3);
+INSERT INTO REPAIR (repair_date, status, job_type, price, address, description, owner_id) VALUES ('2018-07-01', 'FINISHED', 'PAINTING', 75.4, 'Evoias 11', 'This is an Electrical repair', 4);
+INSERT INTO REPAIR (repair_date, status, job_type, price, address, description, owner_id) VALUES ('2020-01-01', 'PENDING', 'PAINTING', 35.5, 'Zakinthou 13', 'This is an Electrical repair', 1);
+INSERT INTO REPAIR (repair_date, status, job_type, price, address, description, owner_id) VALUES ('2020-01-01', 'ONGOING', 'PAINTING', 50, 'Dramas 4', 'This is an Electrical repair', 2);
+INSERT INTO REPAIR (repair_date, status, job_type, price, address, description, owner_id) VALUES ('2023-01-01', 'FINISHED', 'PAINTING', 68.2, 'Zakinthou 13', 'This is an Electrical repair', 3);
+INSERT INTO REPAIR (repair_date, status, job_type, price, address, description, owner_id) VALUES ('2020-01-01', 'FINISHED', 'PAINTING', 75.4, 'Evoias 11', 'This is an Electrical repair', 4);
 INSERT INTO REPAIR (repair_date, status, job_type, price, address, description, owner_id) VALUES ('2020-01-01', 'PENDING', 'PAINTING', 35.5, 'Zakinthou 13', 'This is an Electrical repair', 1);
 INSERT INTO REPAIR (repair_date, status, job_type, price, address, description, owner_id) VALUES ('2020-01-01', 'ONGOING', 'PAINTING', 50, 'Dramas 4', 'This is an Electrical repair', 2);
 INSERT INTO REPAIR (repair_date, status, job_type, price, address, description, owner_id) VALUES ('2020-01-01', 'FINISHED', 'PAINTING', 68.2, 'Zakinthou 13', 'This is an Electrical repair', 3);
 INSERT INTO REPAIR (repair_date, status, job_type, price, address, description, owner_id) VALUES ('2020-01-01', 'FINISHED', 'PAINTING', 75.4, 'Evoias 11', 'This is an Electrical repair', 4);
+
+
 
 
 

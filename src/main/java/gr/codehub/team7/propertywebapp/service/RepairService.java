@@ -3,6 +3,7 @@ package gr.codehub.team7.propertywebapp.service;
 import gr.codehub.team7.propertywebapp.domain.Repair;
 import gr.codehub.team7.propertywebapp.forms.EditRepairForm;
 import gr.codehub.team7.propertywebapp.forms.RepairSearchForm;
+import gr.codehub.team7.propertywebapp.model.RepairModel;
 
 import java.time.LocalDate;
 import java.util.List;
@@ -10,9 +11,9 @@ import java.util.Optional;
 
 public interface RepairService {
 
-    List<Repair> findAll();
+    List<RepairModel> findAll();
 
-    List<Repair> findFirstTenUninished();
+    List<RepairModel> findFirstTenUnfinished();
 
     List<Repair> findByRepairDate(LocalDate date);
 

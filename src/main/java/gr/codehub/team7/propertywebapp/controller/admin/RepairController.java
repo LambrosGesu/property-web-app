@@ -15,6 +15,8 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import java.util.List;
+
 @Controller
 public class RepairController {
     private static final String REPAIRS_LIST = "repairs";
@@ -45,7 +47,9 @@ public class RepairController {
 
     @PostMapping("/repairs/search")
     public String returnRepairs(@ModelAttribute("repairSearchForm") RepairSearchForm repairSearchForm, Model model) {
-        model.addAttribute(REPAIRS_LIST,repairService.findBySearchForm(repairSearchForm));
+        List<Repair> results = repairService.findBySearchForm(repairSearchForm);
+        model.addAttribute("postflag",1);
+        if(results!=null && !results.isEmpty()){model.addAttribute(REPAIRS_LIST,results);}
         return "pages/searchRepairs";
     }
 
@@ -66,7 +70,6 @@ public class RepairController {
 
     @PostMapping("{id}/editrepair")
     public String editRepair(@ModelAttribute EditRepairForm repair, @PathVariable Long id){
-
         repairService.updateRepair(repair,id);
         return "redirect:/repairs";
     }
@@ -75,6 +78,5 @@ public class RepairController {
     public  String deleteRepair(@PathVariable Long id){
         repairService.deleteRepairById(id);
         return "redirect:/repairs";
-        //for commit
     }
 }

@@ -27,7 +27,7 @@ public class AdminHomePageController {
 
     @GetMapping("/admin")
     public String hello(Model model) {
-        model.addAttribute("repairs",repairService.findFirstTenUninished());
+        model.addAttribute("repairs",repairService.findFirstTenUnfinished());
         return "adminhomepage";
     }
 
