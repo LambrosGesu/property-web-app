@@ -1,6 +1,5 @@
 package gr.codehub.team7.propertywebapp.controller.admin;
 
-import gr.codehub.team7.propertywebapp.domain.Owner;
 import gr.codehub.team7.propertywebapp.enums.PropertyType;
 import gr.codehub.team7.propertywebapp.forms.OwnerForm;
 import gr.codehub.team7.propertywebapp.forms.SearchOwnerForm;
@@ -13,6 +12,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -66,12 +66,12 @@ public class OwnerController {
     }
 
     @GetMapping("/searchOwner")
-    public String searchOwner(){
-//        model.addAttribute("searchOwnerForm", new SearchOwnerForm());
+    public String searchOwner(Model model){
+        model.addAttribute("searchOwnerForm", new SearchOwnerForm());
         return "pages/searchowner";
     }
     @PostMapping("/searchOwner")
-    public String searchOwner(SearchOwnerForm owner, Model model){
+    public String searchOwner(@ModelAttribute("searchOwnerForm") SearchOwnerForm owner, Model model){
         List<OwnerModel> owners = new ArrayList<>();
         if(owner.getSsn() !=""){
             owners.add(ownerService.findOwnerBySsn(owner.getSsn()).get());
