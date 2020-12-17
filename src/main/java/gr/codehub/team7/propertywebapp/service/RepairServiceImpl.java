@@ -119,7 +119,7 @@ public class RepairServiceImpl implements RepairService{
             if (searchResults != null) {
                 searchResults.retainAll(findByRepairDateBetween(LocalDate.parse(form.getBetweenDate1()), LocalDate.parse(form.getBetweenDate2())));
             } else {
-                searchResults = findByOwnerSSN(form.getSSN());
+                searchResults = findByRepairDateBetween(LocalDate.parse(form.getBetweenDate1()), LocalDate.parse(form.getBetweenDate2()));
             }
         }
         return searchResults;
