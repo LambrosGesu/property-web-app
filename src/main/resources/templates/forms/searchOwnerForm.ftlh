@@ -1,5 +1,5 @@
 
-<form class="form-inline" action="/searchOwner" name="searchOwnerForm" method="POST">
+<form id ="searchOwnerForm" class="form-inline" action="/searchOwner" name="searchOwnerForm" method="POST">
     <label class="sr-only" for="ssn"></label>
     <div class="input-group mb-2 mr-sm-2">
         <div class="input-group-prepend">

@@ -1,6 +1,5 @@
 package gr.codehub.team7.propertywebapp.service;
 
-import gr.codehub.team7.propertywebapp.domain.Owner;
 import gr.codehub.team7.propertywebapp.forms.OwnerForm;
 import gr.codehub.team7.propertywebapp.model.OwnerModel;
 
@@ -21,7 +20,5 @@ public interface OwnerService {
 
     Optional<OwnerModel> findOwnerById(Long id);
 
-//    List<OwnerModel> findOwnerBySsn(String ssn);
-
-//    List<Owner> findOwnerByEmail(String email);
+    List<OwnerModel> findOwnerBySsnOrEmail(String ssn, String email);
 }

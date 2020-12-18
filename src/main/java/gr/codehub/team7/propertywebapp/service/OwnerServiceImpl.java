@@ -18,6 +18,7 @@ public class OwnerServiceImpl implements OwnerService{
 
     @Autowired
     private OwnerRepository ownerRepository;
+
     @Autowired
     private OwnerToOwnerModelMapper ownertoOwnerModel;
 
@@ -69,6 +70,15 @@ public class OwnerServiceImpl implements OwnerService{
     @Override
     public Optional<OwnerModel> findOwnerById(Long id) {
         return Optional.of(ownertoOwnerModel.map(ownerRepository.findById(id).get()));
+    }
+    @Override
+    public List<OwnerModel> findOwnerBySsnOrEmail(String ssn, String email) {
+        return ownerRepository
+                .findOwnerBySsnOrEmail(ssn,email)
+                .stream()
+                .distinct()
+                .map(owner -> ownertoOwnerModel.map(owner))
+                .collect(Collectors.toList());
     }
 
 }

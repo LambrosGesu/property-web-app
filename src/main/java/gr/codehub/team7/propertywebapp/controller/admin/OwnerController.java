@@ -13,7 +13,6 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -72,13 +71,7 @@ public class OwnerController {
     }
     @PostMapping("/searchOwner")
     public String searchOwner(@ModelAttribute("searchOwnerForm") SearchOwnerForm owner, Model model){
-        List<OwnerModel> owners = new ArrayList<>();
-        if(owner.getSsn() !=""){
-            owners.add(ownerService.findOwnerBySsn(owner.getSsn()).get());
-        }
-        if(owner.getEmail() !=""){
-            owners.add(ownerService.findOwnerByEmail(owner.getEmail()).get());
-        }
+        List<OwnerModel> owners = ownerService.findOwnerBySsnOrEmail(owner.getSsn(), owner.getEmail());
         if (!owners.isEmpty()){
             model.addAttribute("owners", owners.stream().distinct().collect(Collectors.toList()));
         }
