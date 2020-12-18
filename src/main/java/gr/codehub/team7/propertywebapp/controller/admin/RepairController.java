@@ -17,12 +17,14 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 import javax.validation.Valid;
 
 import java.util.List;
 
 @Controller
+@RequestMapping("admin")
 public class RepairController {
     private static final String REPAIRS_LIST = "repairs";
     private static final String REPAIRS_FORM = "add-repair";
@@ -60,7 +62,7 @@ public class RepairController {
             return "pages/createrepair";
         }
         repairService.insertRepair(repairForm);
-        return "redirect:/repairs";
+        return "redirect:/admin/repairs";
     }
 
     @GetMapping("/repairs/search")
@@ -91,15 +93,15 @@ public class RepairController {
         return "pages/editrepair";
     }
 
-    @PostMapping("{id}/editrepair")
+    @PostMapping("/editrepair")
     public String editRepair(@ModelAttribute EditRepairForm repair, @PathVariable Long id){
         repairService.updateRepair(repair,id);
-        return "redirect:/repairs";
+        return "redirect:/admin/repairs";
     }
 
     @PostMapping("/repair/{id}/delete")
     public  String deleteRepair(@PathVariable Long id){
         repairService.deleteRepairById(id);
-        return "redirect:/repairs";
+        return "redirect:/admin/repairs";
     }
 }

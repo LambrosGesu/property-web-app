@@ -10,6 +10,6 @@
 
         let deleteForm = $('#deleteForm');
 
-        deleteForm.attr('action', 'repair/'+id+'/delete');
+        deleteForm.attr('action', '/admin/repair/'+id+'/delete');
     });
 })();

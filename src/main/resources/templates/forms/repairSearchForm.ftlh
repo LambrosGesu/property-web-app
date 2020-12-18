@@ -2,7 +2,7 @@
 
 
 
-<form id ="repsearchform" action="/repairs/search" method="post">
+<form id ="repsearchform" action="/admin/repairs/search" method="post">
     <div class="mb-3">
 
         <h6 class="text-muted">REPAIR DATE  </h6>

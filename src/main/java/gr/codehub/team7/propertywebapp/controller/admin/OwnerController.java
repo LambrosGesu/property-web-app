@@ -12,12 +12,14 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
 @Controller
+@RequestMapping("admin")
 public class OwnerController {
     private static final String PROPERTY_TYPE = "propertyType";
 
@@ -50,7 +52,7 @@ public class OwnerController {
            return "pages/editowner";
     }
 
-    @PostMapping("{id}/edit-owner")
+    @PostMapping("/edit-owner")
     public  String editOwner(@ModelAttribute OwnerForm owner, @PathVariable Long id){
         //Optional<Owner> ownerId=ownerService.findOwnerBySsn(owner.getSsn());
         ownerService.updateOwner(owner,id);

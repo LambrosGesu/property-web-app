@@ -7,10 +7,11 @@
 -- IF spring.jpa.hibernate.ddl-auto IS SET TO create OR create-drop
 -- IT IS A Hibernate feature (nothing to do with Spring)
 
-INSERT INTO OWNER (ssn, firstname, lastname, address, phone_number, email, password, property_type, role) VALUES ('121435904', 'Lambros', 'Gesoulis', 'Zakinthou 13', '6954123554', 'lg@test.gr', 'lg726925', 'MAISONETTE', 'ADMIN');
-INSERT INTO OWNER (ssn, firstname, lastname, address, phone_number, email, password, property_type, role) VALUES ('398135972', 'George', 'Dougkas', 'Dramas 4', '6954123554', 'gd@test.gr', 'gd726925', 'MAISONETTE', 'USER');
-INSERT INTO OWNER (ssn, firstname, lastname, address, phone_number, email, password, property_type, role) VALUES ('461789591', 'Katerina', ' Kanellopoulou', 'Akratas 25', '6954123554', 'kk@test.gr', 'kk726925', 'MAISONETTE', 'USER');
-INSERT INTO OWNER (ssn, firstname, lastname, address, phone_number, email, password, property_type, role) VALUES ('731435934', 'Vasileios', 'Nikoulis', 'Evoias 11', '6954123554', 'vn@test.gr', 'vn726925', 'MAISONETTE', 'USER');
+-- pass123, pass456, pass789, pass789
+INSERT INTO OWNER (ssn, firstname, lastname, address, phone_number, email, password, property_type, role) VALUES ('121435904', 'Lambros', 'Gesoulis', 'Zakinthou 13', '6954123554', 'lg@test.gr', '$2a$10$fnLdWRjVEqiWCvXz6AniwezZ3phpbs4x7jarwUrDkQqes8oA0i8nu', 'MAISONETTE', 'ADMIN');
+INSERT INTO OWNER (ssn, firstname, lastname, address, phone_number, email, password, property_type, role) VALUES ('398135972', 'George', 'Dougkas', 'Dramas 4', '6954123554', 'gd@test.gr', '$2a$10$ZUFD4zbHhnoInU/i43361eLXnQmK/BHcW.lkSZNUh.cuo002CJYUa', 'MAISONETTE', 'USER');
+INSERT INTO OWNER (ssn, firstname, lastname, address, phone_number, email, password, property_type, role) VALUES ('461789591', 'Katerina', ' Kanellopoulou', 'Akratas 25', '6954123554', 'kk@test.gr', '$2a$10$Rlskril/J056q7A7o3XLge5iQvD68se213X3h8jKr0gLHAcjOT1rq', 'MAISONETTE', 'USER');
+INSERT INTO OWNER (ssn, firstname, lastname, address, phone_number, email, password, property_type, role) VALUES ('731435934', 'Vasileios', 'Nikoulis', 'Evoias 11', '6954123554', 'vn@test.gr', '$2a$10$Rlskril/J056q7A7o3XLge5iQvD68se213X3h8jKr0gLHAcjOT1rq', 'MAISONETTE', 'USER');
 
 INSERT INTO REPAIR (repair_date, status, job_type, price, address, description, owner_id) VALUES ('2020-01-04', 'PENDING', 'PAINTING', 35.5, 'Zakinthou 13', 'This is an Electrical repair', '1');
 INSERT INTO REPAIR (repair_date, status, job_type, price, address, description, owner_id) VALUES ('2020-02-02', 'ONGOING', 'PAINTING', 50, 'Dramas 4', 'This is an Electrical repair', '2');

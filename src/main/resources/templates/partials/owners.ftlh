@@ -22,7 +22,7 @@
             <td>${owner.propertyType}</td>
 
             <td class="text-center">
-                <a href="${owner.id}/edit-owner/">
+                <a href="/admin/${owner.id}/edit-owner/">
                     <span data-feather="tool"></span>
                 </a>
             </td>

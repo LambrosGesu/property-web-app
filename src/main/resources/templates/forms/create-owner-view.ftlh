@@ -1,7 +1,7 @@
 
 <div class="container pt-4">
 
-    <form method="post" action="/owner/create" id="add-owner">
+    <form method="post" action="/admin/owner/create" id="add-owner">
 
         <div class="form-group">
             <label for="ssn">SSN</label>

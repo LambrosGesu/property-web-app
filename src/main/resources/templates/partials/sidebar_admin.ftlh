@@ -12,21 +12,21 @@
                 <span>Repairs</span>
             </h6>
             <li class="nav-item">
-                <a class="nav-link " href="/repairs">
+                <a class="nav-link " href="/admin/repairs">
                     <span data-feather="menu"></span>
                     Show
                 </a>
             </li>
 
             <li class="nav-item">
-                <a class="nav-link" href="/repairs/search">
+                <a class="nav-link" href="/admin/repairs/search">
                     <span data-feather="search"></span>
                     Search
                 </a>
             </li>
 
             <li class="nav-item">
-                <a class="nav-link" href="/repair/create">
+                <a class="nav-link" href="/admin/repair/create">
                     <span data-feather="plus-circle"></span>
                     Create
                 </a>
@@ -37,21 +37,21 @@
             </h6>
 
             <li class="nav-item">
-                <a class="nav-link " href="/owners">
+                <a class="nav-link " href="/admin/owners">
                     <span data-feather="menu"></span>
                     Show
                 </a>
             </li>
 
             <li class="nav-item">
-                <a class="nav-link" href="/searchOwner">
+                <a class="nav-link" href="/admin/searchOwner">
                     <span data-feather="search"></span>
                     Search
                 </a>
             </li>
 
             <li class="nav-item">
-                <a class="nav-link" href="/owner/create">
+                <a class="nav-link" href="/admin/owner/create">
                     <span data-feather="plus-circle"></span>
                     Create
                 </a>

@@ -2,7 +2,7 @@
     <div class="sidebar-sticky">
         <ul class="nav flex-column" id="navItems">
             <li class="nav-item">
-                <a class="nav-link" href="./user">
+                <a class="nav-link" href="/user">
                     <span data-feather="home"></span>
                     Home
                 </a>
@@ -12,7 +12,7 @@
                 <span>Repairs</span>
             </h6>
             <li class="nav-item">
-                <a class="nav-link " href="./user">
+                <a class="nav-link " href="/user">
                     <span data-feather="menu"></span>
                     Show
                 </a>

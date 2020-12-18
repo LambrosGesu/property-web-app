@@ -23,7 +23,7 @@
             <td>${repair.description}</td>
             <td>${repair.ownerFirstName} ${repair.ownerLastName}</td>
             <td class="text-center">
-                <a href="/${repair.id}/editrepair">
+                <a href="/admin/${repair.id}/editrepair">
                     <span data-feather="tool"></span>
                 </a>
             </td>

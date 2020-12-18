@@ -10,6 +10,6 @@
 
         let deleteForm = $('#deleteForm_owner');
 
-        deleteForm.attr('action', 'owner/'+id+'/delete');
+        deleteForm.attr('action', '/admin/owner/'+id+'/delete');
     });
 })();
