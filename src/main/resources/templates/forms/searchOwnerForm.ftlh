@@ -15,6 +15,7 @@
             <span class="input-group-text"><span data-feather="mail"></span></span>
         </div>
         <input type="text" class="form-control" id="email" name="email" placeholder="Email">
+
     </div>
 
     <button type="submit" class="btn btn-primary mb-2">Search</button>

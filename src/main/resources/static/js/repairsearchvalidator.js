@@ -1,6 +1,7 @@
 
-(function () {
+jQuery(function () {
     $('#repsearchform').validate({
+
         rules: {
             repairDate: {
                 required: false
@@ -23,7 +24,10 @@
                 minlength: "It should be 9 digits.",
                 maxlength: "It should be 9 digits."
             }
-        }
+        },
+
+        errorElement : 'div',
+        errorLabelContainer: '.errorTxt'
     });
 })();
 

@@ -30,10 +30,12 @@
             <div class="input-group-prepend">
                 <span class="input-group-text"><span data-feather="user"></span></span>
             </div>
-            <input type="text" class="form-control"  name="SSN" placeholder="*********">
+            <input type="text" class="form-control"  name="SSN" placeholder="*********"><br>
         </div>
 
     </div>
+    <div class="errorTxt"></div>
+
 
     <button class="btn btn-primary btn-lg mt-4" type="submit">Search</button>
 
