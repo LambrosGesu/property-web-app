@@ -9,4 +9,5 @@
 </script>
 <script src="/js/repairsearchvalidator.js"></script>
 <script src="/js/datepicker.js"></script>
+<script src="/js/repair_validator.js"></script>
 

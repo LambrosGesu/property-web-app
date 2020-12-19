@@ -63,11 +63,11 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/").permitAll()
                 .antMatchers("login").anonymous()
                 .antMatchers("/admin/**").hasAuthority("ADMIN")
-                .antMatchers("/user/**").hasAuthority("USER");
+                .antMatchers("/user/**").hasAuthority("USER")
 
                 //ERROR HANDLING FOR ACCESS DENIED
-                /*.and()
-                .exceptionHandling().accessDeniedPage("/error/access-denied")*/
+                .and()
+                .exceptionHandling().accessDeniedPage("/error/custom-error");
 
     }
 
