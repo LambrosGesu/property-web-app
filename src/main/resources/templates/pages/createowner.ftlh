@@ -19,6 +19,9 @@
                 <div class="col-md-12 order-md-1">
                     <h2>Create owner</h2>
                     <#include "../forms/create-owner-view.ftlh">
+                   <!-- <if ssnErrorFlag??>
+                        <script>alert("SSN already in use.");</script>
+                    </if>-->
                 </div>
             </div>
         </main>

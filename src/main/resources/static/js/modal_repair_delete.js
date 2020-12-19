@@ -6,7 +6,7 @@
         let id = modalButton.closest('[data-id]').data('id');
 
         let modalTitle = $('.modal-title');
-        modalTitle.text(`Confirm delete Repair ${id}`);
+        modalTitle.text(`Confirm  Repair Delete`);
 
         let deleteForm = $('#deleteForm');
 

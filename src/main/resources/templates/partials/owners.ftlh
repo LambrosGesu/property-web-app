@@ -46,8 +46,8 @@
                 </button>
             </div>
             <div class="modal-body">
-                <h3>Caution!!! this action will also delete the relevant repairs</h3>
-                <p>Are you sure?</p>
+                <h5 style="color: #d94949">Caution!</h5>
+                <p>This action will also delete the relevant repairs. Are you sure?</p>
             </div>
             <div class="modal-footer">
                 <form method="post" id="deleteForm_owner">

@@ -48,7 +48,9 @@ public class OwnerServiceImpl implements OwnerService{
 
     @Override
     public OwnerModel insertOwner(OwnerForm ownerForm) {
-
+        if(ownerRepository.findOwnerBySsn(ownerForm.getSsn()).isPresent()){
+            return null; //this could be optional or error
+        }
         return ownertoOwnerModel.map(ownerRepository.save(ownerFormtoOwner.map(ownerForm)));
     }
 

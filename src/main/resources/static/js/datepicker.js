@@ -22,8 +22,7 @@
 })();
 
 (function () {
-
-    document.getElementById("datepicker").addEventListener("input", evt=>{
+    $('#datepicker').on("change", function(e) {
         let value = document.getElementById("datepicker").value;
         if(value){
             document.getElementById("datepicker1").disabled = true;
@@ -33,7 +32,12 @@
             document.getElementById("datepicker2").disabled = false;
         }
     });
-    document.getElementById("datepicker1").addEventListener("input", evt=>{
+
+})();
+
+
+(function () {
+    $('#datepicker1').on("change", function(e) {
         let value = document.getElementById("datepicker1").value;
         if(value){
             document.getElementById("datepicker").disabled = true;
@@ -41,7 +45,11 @@
             document.getElementById("datepicker").disabled = false;
         }
     });
-    document.getElementById("datepicker2").addEventListener("input", evt=>{
+
+})();
+
+(function () {
+    $('#datepicker2').on("change", function(e) {
         let value = document.getElementById("datepicker2").value;
         if(value){
             document.getElementById("datepicker").disabled = true;
@@ -50,5 +58,6 @@
         }
     });
 
-
 })();
+
+

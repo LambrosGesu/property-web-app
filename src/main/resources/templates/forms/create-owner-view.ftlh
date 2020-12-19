@@ -5,7 +5,11 @@
 
         <div class="form-group">
             <label for="ssn">SSN</label>
+
             <input type="text" name="ssn" id="ssn" class="form-control"/>
+            <#if ssnErrorFlag??>
+                <div class="" style="color:red">SSN already in use.</div>
+            </#if>
         </div>
 
 

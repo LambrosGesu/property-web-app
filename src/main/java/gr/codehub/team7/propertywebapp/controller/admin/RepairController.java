@@ -83,11 +83,6 @@ public class RepairController {
         return "pages/searchRepairs";
     }
 
-//    @PostMapping("/repair/create")
-//    public String createRepairPost(Model model, @ModelAttribute Repair repair){
-//        repairService.insertRepair(repair);
-//        return "redirect:/repairs";
-//    }
 
     @GetMapping("{id}/editrepair")
     public String editRepair(Model model, @PathVariable Long id){
