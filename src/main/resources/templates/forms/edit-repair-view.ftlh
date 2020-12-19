@@ -1,8 +1,9 @@
 <div class="container pt-4">
 
 
-    <form method="post" action="/admin/editrepair" id="add-repair">
 
+    <form method="post" action="/admin/editrepair" id="add-repair">
+        <input type="hidden" name="id" value="${repair.id}">
         <div class="form-group">
 
             <label for="datepicker">Date</label>

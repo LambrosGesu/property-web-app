@@ -1,11 +1,14 @@
 package gr.codehub.team7.propertywebapp.controller.admin;
 
+import gr.codehub.team7.propertywebapp.domain.Owner;
 import gr.codehub.team7.propertywebapp.domain.Repair;
 import gr.codehub.team7.propertywebapp.enums.JobType;
 import gr.codehub.team7.propertywebapp.enums.Status;
 import gr.codehub.team7.propertywebapp.forms.EditRepairForm;
 import gr.codehub.team7.propertywebapp.forms.RepairForm;
 import gr.codehub.team7.propertywebapp.forms.RepairSearchForm;
+import gr.codehub.team7.propertywebapp.mappers.OwnerToOwnerModelMapper;
+import gr.codehub.team7.propertywebapp.model.OwnerModel;
 import gr.codehub.team7.propertywebapp.model.RepairModel;
 import gr.codehub.team7.propertywebapp.service.OwnerService;
 import gr.codehub.team7.propertywebapp.service.RepairService;
@@ -19,9 +22,11 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import javax.swing.text.html.Option;
 import javax.validation.Valid;
 
 import java.util.List;
+import java.util.Optional;
 
 @Controller
 @RequestMapping("admin")
@@ -94,8 +99,8 @@ public class RepairController {
     }
 
     @PostMapping("/editrepair")
-    public String editRepair(@ModelAttribute EditRepairForm repair, @PathVariable Long id){
-        repairService.updateRepair(repair,id);
+    public String editRepair(@ModelAttribute EditRepairForm repair){
+        repairService.updateRepair(repair,Long.parseLong(repair.getId()));
         return "redirect:/admin/repairs";
     }
 

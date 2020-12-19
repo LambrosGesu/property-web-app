@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Controller
@@ -41,7 +42,7 @@ public class OwnerController {
     @PostMapping("/owner/create")
     public String createOwnerPost(Model model, @ModelAttribute OwnerForm ownerForm){
         ownerService.insertOwner(ownerForm);
-        return "redirect:/owners";
+        return "redirect:/admin/owners";
     }
 
     @GetMapping("{id}/edit-owner")
@@ -53,10 +54,10 @@ public class OwnerController {
     }
 
     @PostMapping("/edit-owner")
-    public  String editOwner(@ModelAttribute OwnerForm owner, @PathVariable Long id){
-        //Optional<Owner> ownerId=ownerService.findOwnerBySsn(owner.getSsn());
-        ownerService.updateOwner(owner,id);
-        return  "redirect:/owners";
+    public  String editOwner(@ModelAttribute OwnerForm owner){
+        Optional<OwnerModel> ownerId=ownerService.findOwnerBySsn(owner.getSsn());
+        ownerService.updateOwner(owner,ownerId.get().getId());
+        return  "redirect:/admin/owners";
     }
 
 
@@ -64,7 +65,7 @@ public class OwnerController {
     @PostMapping("/owner/{id}/delete")
     public  String deleteOwner(@PathVariable Long id){
         ownerService.deleteOwnerById(id);
-        return "redirect:/owners";
+        return "redirect:/admin/owners";
     }
 
     @GetMapping("/searchOwner")

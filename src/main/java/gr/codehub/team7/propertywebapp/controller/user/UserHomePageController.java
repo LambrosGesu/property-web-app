@@ -30,16 +30,18 @@ public class UserHomePageController {
 
     }
 
-    @GetMapping("{id}/info")
-    public  String information(Model model, @PathVariable Long id){
-        model.addAttribute("owner",ownerService.findOwnerById(id).get());
+    @GetMapping("/info")
+    public  String information(Model model){
+        Optional<OwnerModel> owners = ownerService.findOwnerByEmail(SecurityContextHolder.getContext().getAuthentication().getName());
+        model.addAttribute("owner",ownerService.findOwnerById(owners.get().getId()).get());
         return "ownerinfo";
 
     }
 
-    @GetMapping("{id}/repairs")
-    public String getRepairs(Model model, @PathVariable Long id){
-        model.addAttribute("repairs", repairService.findByOwnerId(id));
+    @GetMapping("/repairs")
+    public String getRepairs(Model model){
+        Optional<OwnerModel> owner = ownerService.findOwnerByEmail(SecurityContextHolder.getContext().getAuthentication().getName());
+        model.addAttribute("repairs", repairService.findByOwnerId(owner.get().getId()));
         return "showrepairs";
     }
 
