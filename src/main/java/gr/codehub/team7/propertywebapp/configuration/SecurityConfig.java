@@ -67,7 +67,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
                 //ERROR HANDLING FOR ACCESS DENIED
                 .and()
-                .exceptionHandling().accessDeniedPage("/error/custom-error");
+                .exceptionHandling().accessDeniedPage("/error/deny_error");
 
     }
 

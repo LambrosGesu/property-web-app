@@ -1,13 +1,13 @@
 package gr.codehub.team7.propertywebapp.forms;
 
 import gr.codehub.team7.propertywebapp.domain.Owner;
+import org.springframework.beans.factory.annotation.Value;
 
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Size;
 
 public class RepairForm {
     private String id;
-    //den doulevoun ta validations
     @NotEmpty(message = "Please provide a date")
     private String repairDate;
 
