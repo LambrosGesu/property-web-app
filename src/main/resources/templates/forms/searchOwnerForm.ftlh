@@ -5,7 +5,7 @@
         <div class="input-group-prepend">
             <span class="input-group-text"><span data-feather="user"></span></span>
         </div>
-        <input type="text" class="form-control" id="ssn" name="ssn" placeholder="Α.Φ.Μ.">
+        <input type="text" class="form-control" id="ssn" name="ssn" placeholder="SSN">
     </div>
 
 

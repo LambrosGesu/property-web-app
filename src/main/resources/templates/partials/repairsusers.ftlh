@@ -11,7 +11,6 @@
 
 <table class="table">
     <thead>
-    <th>ID</th>
     <th>Date</th>
     <th>Status</th>
     <th>Job Type</th>
@@ -24,7 +23,6 @@
     <tbody>
     <#list repairs as repair>
         <tr data-id="${repair.id}">
-            <td>${repair.id}</td>
             <td>${repair.repairDate}</td>
             <td>${repair.status}</td>
             <td>${repair.jobType}</td>

@@ -22,18 +22,16 @@
                     <h2>Here is your information</h2>
                     <table class="table">
                         <thead>
-                        <th>ID</th>
                         <th>Full Name</th>
                         <th>Address</th>
                         <th>Phone Number</th>
                         <th>Email</th>
-                        <th>PropertyType</th>
+                        <th>Property Type</th>
 
                         </thead>
 
                         <tbody>
                             <tr data-id="${owner.id}">
-                                <td>${owner.id}</td>
                                 <td>${owner.firstname} ${owner.lastname}</td>
                                 <td>${owner.address}</td>
                                 <td>${owner.phone_number}</td>

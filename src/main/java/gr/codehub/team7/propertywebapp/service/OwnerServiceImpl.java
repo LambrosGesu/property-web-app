@@ -1,6 +1,7 @@
 package gr.codehub.team7.propertywebapp.service;
 
 import gr.codehub.team7.propertywebapp.domain.Owner;
+import gr.codehub.team7.propertywebapp.enums.Role;
 import gr.codehub.team7.propertywebapp.forms.OwnerForm;
 import gr.codehub.team7.propertywebapp.mappers.OwnerFormToOwnerMapper;
 import gr.codehub.team7.propertywebapp.mappers.OwnerToOwnerModelMapper;

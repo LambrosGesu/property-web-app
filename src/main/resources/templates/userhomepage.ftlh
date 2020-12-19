@@ -17,7 +17,7 @@
         <main role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
             <div class="row">
                 <div class="col-md-12 order-md-1">
-                    <h2>Hello! Here is your repairs</h2>
+                    <h2>Hello! Here are your repairs</h2>
                     <#include "partials/repairsusers.ftlh">
                 </div>
             </div>

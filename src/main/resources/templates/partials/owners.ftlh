@@ -1,12 +1,12 @@
 
 <table class="table">
     <thead>
-    <th>ID</th>
     <th>Full Name</th>
+    <th>SSN</th>
     <th>Address</th>
     <th>Phone Number</th>
     <th>Email</th>
-    <th>PropertyType</th>
+    <th>Property Type</th>
     <th class="text-center">Edit</th>
     <th class="text-center">Remove</th>
     </thead>
@@ -14,8 +14,8 @@
     <tbody>
     <#list owners as owner>
         <tr data-id="${owner.id}">
-            <td>${owner.id}</td>
             <td>${owner.firstname} ${owner.lastname}</td>
+            <td>${owner.ssn}</td>
             <td>${owner.address}</td>
             <td>${owner.phone_number}</td>
             <td>${owner.email}</td>
@@ -46,6 +46,7 @@
                 </button>
             </div>
             <div class="modal-body">
+                <h3>Caution!!! this action will also delete the relevant repairs</h3>
                 <p>Are you sure?</p>
             </div>
             <div class="modal-footer">

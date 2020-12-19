@@ -2,7 +2,7 @@
 <div class="container pt-4">
 
 
-    <form method="post" action="/repair/create" id="add-repair">
+    <form method="post" action="/admin/repair/create" id="add-repair">
 
         <div class="form-group">
 
