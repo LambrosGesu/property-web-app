@@ -7,7 +7,7 @@ import javax.validation.constraints.Size;
 
 public class RepairForm {
     private String id;
-    //den doulevoun ta validations
+
     @NotEmpty(message = "Please provide a date")
     private String repairDate;
 
@@ -24,7 +24,7 @@ public class RepairForm {
 
     private String description;
 
-    private Owner owner;
+    private String owner;
 
     public String getId() {
         return id;
@@ -82,11 +82,11 @@ public class RepairForm {
         this.description = description;
     }
 
-    public Owner getOwner() {
+    public String getOwner() {
         return owner;
     }
 
-    public void setOwner(Owner owner) {
+    public void setOwner(String owner) {
         this.owner = owner;
     }
 }

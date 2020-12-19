@@ -21,7 +21,7 @@ public class RepairFormToRepairMapperCreate {
         repair.setPrice(Double.parseDouble(repairForm.getPrice()));
         repair.setAddress(repairForm.getAddress());
         repair.setDescription(repairForm.getDescription());
-        repair.setOwner(repairForm.getOwner());
+
         return repair;
     }
 

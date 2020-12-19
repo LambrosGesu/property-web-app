@@ -1,42 +1,102 @@
-
+<#import "/spring.ftl" as spring />
 <div class="container pt-4">
 
-    <form method="post" action="/admin/owner/create" id="add-owner">
+    <form method="post" action="/admin/owner/create" name="ownerForm" id="ownerForm">
 
         <div class="form-group">
             <label for="ssn">SSN</label>
+            <@spring.bind "ownerForm.ssn"/>
             <input type="text" name="ssn" id="ssn" class="form-control"/>
+            <#if spring.status.error??>
+                <ul>
+                    <#list spring.status.errorMessages as error>
+                        <li style="color: #dc3545">${error}</li>
+                    </#list>
+                </ul>
+            </#if>
+            <#if ssnErrorFlag??>
+                <div class="" style="color:red">SSN already in use.</div>
+            </#if>
         </div>
 
 
         <div class="form-group">
             <label for="firstname">First Name</label>
+            <@spring.bind "ownerForm.firstname"/>
             <input type="text" name="firstname" id="firstname" class="form-control"/>
+            <#if spring.status.error??>
+                <ul>
+                    <#list spring.status.errorMessages as error>
+                        <li style="color: #dc3545">${error}</li>
+                    </#list>
+                </ul>
+            </#if>
         </div>
 
         <div class="form-group">
+
             <label for="lastname">Last Name</label>
+            <@spring.bind "ownerForm.lastname"/>
             <input type="text" name="lastname" id="lastname" class="form-control"/>
+            <#if spring.status.error??>
+                <ul>
+                    <#list spring.status.errorMessages as error>
+                        <li style="color: #dc3545">${error}</li>
+                    </#list>
+                </ul>
+            </#if>
         </div>
 
         <div class="form-group">
             <label for="address">Address</label>
+            <@spring.bind "ownerForm.address"/>
             <input type="text" name="address" id="address" class="form-control"/>
+            <#if spring.status.error??>
+                <ul>
+                    <#list spring.status.errorMessages as error>
+                        <li style="color: #dc3545">${error}</li>
+                    </#list>
+                </ul>
+            </#if>
         </div>
 
         <div class="form-group">
             <label for="phone_number">Phone Number</label>
+            <@spring.bind "ownerForm.phone_number"/>
             <input type="text" name="phone_number" id="phone_number" class="form-control"/>
+            <#if spring.status.error??>
+                <ul>
+                    <#list spring.status.errorMessages as error>
+                        <li style="color: #dc3545">${error}</li>
+                    </#list>
+                </ul>
+            </#if>
         </div>
 
         <div class="form-group">
             <label for="email">Email</label>
+            <@spring.bind "ownerForm.email"/>
             <input type="text" name="email" id="email" class="form-control"/>
+            <#if spring.status.error??>
+                <ul>
+                    <#list spring.status.errorMessages as error>
+                        <li style="color: #dc3545">${error}</li>
+                    </#list>
+                </ul>
+            </#if>
         </div>
 
         <div class="form-group">
             <label for="password">Password</label>
+            <@spring.bind "ownerForm.password"/>
             <input type="text" name="password" id="password" class="form-control"/>
+            <#if spring.status.error??>
+                <ul>
+                    <#list spring.status.errorMessages as error>
+                        <li style="color: #dc3545">${error}</li>
+                    </#list>
+                </ul>
+            </#if>
         </div>
 
         <div class="form-group">
@@ -60,4 +120,6 @@
         integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx"
         crossorigin="anonymous"></script>
 <script src="https://unpkg.com/feather-icons/dist/feather.min.js"></script>
+
+
 

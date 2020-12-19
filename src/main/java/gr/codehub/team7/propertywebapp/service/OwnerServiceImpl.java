@@ -2,12 +2,15 @@ package gr.codehub.team7.propertywebapp.service;
 
 import gr.codehub.team7.propertywebapp.domain.Owner;
 import gr.codehub.team7.propertywebapp.enums.Role;
+import gr.codehub.team7.propertywebapp.forms.OwnerEditForm;
 import gr.codehub.team7.propertywebapp.forms.OwnerForm;
+import gr.codehub.team7.propertywebapp.mappers.OwnerEditFormToOwnerMapper;
 import gr.codehub.team7.propertywebapp.mappers.OwnerFormToOwnerMapper;
 import gr.codehub.team7.propertywebapp.mappers.OwnerToOwnerModelMapper;
 import gr.codehub.team7.propertywebapp.model.OwnerModel;
 import gr.codehub.team7.propertywebapp.repository.OwnerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -24,6 +27,9 @@ public class OwnerServiceImpl implements OwnerService{
 
     @Autowired
     private OwnerFormToOwnerMapper ownerFormtoOwner;
+
+    @Autowired
+    private OwnerEditFormToOwnerMapper ownerEditFormtoOwner;
 
     @Override
     public List<OwnerModel> getAllOwners() {
@@ -48,13 +54,21 @@ public class OwnerServiceImpl implements OwnerService{
 
     @Override
     public OwnerModel insertOwner(OwnerForm ownerForm) {
+        Optional<Owner> ownerOptional= ownerRepository.findOwnerBySsn(ownerForm.getSsn());
+        if(!ownerOptional.isPresent()){
+            Owner owner= ownerFormtoOwner.map(ownerForm);
+            owner.setRole(Role.USER);
+            owner.setPassword(new BCryptPasswordEncoder().encode(ownerForm.getPassword()));
+            return ownertoOwnerModel.map(ownerRepository.save(owner));
 
-        return ownertoOwnerModel.map(ownerRepository.save(ownerFormtoOwner.map(ownerForm)));
+        }
+        return null;
+
     }
 
     @Override
-    public OwnerModel updateOwner(OwnerForm ownerForm, Long id) {
-        Owner owner=ownerFormtoOwner.map(ownerForm);
+    public OwnerModel updateOwner(OwnerEditForm ownerForm, Long id) {
+        Owner owner=ownerEditFormtoOwner.map(ownerForm);
         if(ownerRepository.findById(id).isPresent()){
             owner.setId(id);
             return ownertoOwnerModel.map( ownerRepository.save(owner));

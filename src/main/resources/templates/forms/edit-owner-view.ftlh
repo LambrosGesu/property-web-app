@@ -1,8 +1,8 @@
-
+<#import "/spring.ftl" as spring />
 <div class="container pt-4">
 
-    <form method="post" action="/admin/edit-owner" id="add-owner">
-
+    <form method="post" action="/admin/edit-owner" name="ownerForm" id="ownerForm">
+        <input type="hidden" name="id" value="${owner.id}">
         <div class="form-group">
             <label for="ssn">SSN</label>
             <input type="text" name="ssn" id="ssn" value="${owner.ssn}" class="form-control"/>
@@ -11,27 +11,67 @@
 
         <div class="form-group">
             <label for="firstname">First Name</label>
+            <@spring.bind "ownerForm.firstname"/>
             <input type="text" name="firstname" id="firstname" value="${owner.firstname}" class="form-control"/>
+            <#if spring.status.error??>
+                <ul>
+                    <#list spring.status.errorMessages as error>
+                        <li style="color: #dc3545">${error}</li>
+                    </#list>
+                </ul>
+            </#if>
         </div>
 
         <div class="form-group">
             <label for="lastname">Last Name</label>
+            <@spring.bind "ownerForm.lastname"/>
             <input type="text" name="lastname" id="lastname" value="${owner.lastname}"class="form-control"/>
+            <#if spring.status.error??>
+                <ul>
+                    <#list spring.status.errorMessages as error>
+                        <li style="color: #dc3545">${error}</li>
+                    </#list>
+                </ul>
+            </#if>
         </div>
 
         <div class="form-group">
             <label for="address">Address</label>
+            <@spring.bind "ownerForm.address"/>
             <input type="text" name="address" id="address" value="${owner.address}" class="form-control"/>
+            <#if spring.status.error??>
+                <ul>
+                    <#list spring.status.errorMessages as error>
+                        <li style="color: #dc3545">${error}</li>
+                    </#list>
+                </ul>
+            </#if>
         </div>
 
         <div class="form-group">
             <label for="phone_number">Phone Number</label>
+            <@spring.bind "ownerForm.phone_number"/>
             <input type="text" name="phone_number" id="phone_number" value="${owner.phone_number}" class="form-control"/>
+            <#if spring.status.error??>
+                <ul>
+                    <#list spring.status.errorMessages as error>
+                        <li style="color: #dc3545">${error}</li>
+                    </#list>
+                </ul>
+            </#if>
         </div>
 
         <div class="form-group">
             <label for="email">Email</label>
+            <@spring.bind "ownerForm.email"/>
             <input type="text" name="email" id="email" value="${owner.email}" class="form-control"/>
+            <#if spring.status.error??>
+                <ul>
+                    <#list spring.status.errorMessages as error>
+                        <li style="color: #dc3545">${error}</li>
+                    </#list>
+                </ul>
+            </#if>
         </div>
 
         <div class="form-group">

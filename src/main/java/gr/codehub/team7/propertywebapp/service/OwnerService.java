@@ -1,6 +1,7 @@
 package gr.codehub.team7.propertywebapp.service;
 
 import gr.codehub.team7.propertywebapp.domain.Owner;
+import gr.codehub.team7.propertywebapp.forms.OwnerEditForm;
 import gr.codehub.team7.propertywebapp.forms.OwnerForm;
 import gr.codehub.team7.propertywebapp.model.OwnerModel;
 
@@ -15,7 +16,7 @@ public interface OwnerService {
     Optional<OwnerModel> findOwnerBySsn(String ssn);
 
     OwnerModel insertOwner(OwnerForm ownerForm);
-    OwnerModel updateOwner(OwnerForm ownerForm, Long id);
+    OwnerModel updateOwner(OwnerEditForm ownerForm, Long id);
 
     void deleteOwnerById(Long id);
 

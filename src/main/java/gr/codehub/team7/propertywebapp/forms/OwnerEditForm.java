@@ -4,14 +4,12 @@ import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 
-public class OwnerForm {
+public class OwnerEditForm {
 
     private static final String MAIL_PATTERN = "[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{1,63}$";
-    private static final String PASSWORD_PATTERN = "^[a-zA-Z0-9@#$%^&]*$";
     private static final int SSN_LENGTH=9;
     private static final int PHONE_LENGTH=10;
-    private static final int PASSWORD_MIN_SIZE = 6;
-    private static final int PASSWORD_MAX_SIZE = 20;
+
 
     private String id;
 
@@ -35,11 +33,6 @@ public class OwnerForm {
     @Pattern(regexp = MAIL_PATTERN, message = "enter an valid email")
     @NotEmpty(message = "no empty")
     private String email;
-
-    @Pattern(regexp = PASSWORD_PATTERN, message = " ")
-    @Size(min = PASSWORD_MIN_SIZE, max = PASSWORD_MAX_SIZE, message = "Password between 6 and 20 characters")
-    @NotEmpty(message = "no empty")
-    private String password;
 
 
     private String propertyType;
@@ -94,14 +87,6 @@ public class OwnerForm {
 
     public void setEmail(String email) {
         this.email = email;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
     }
 
     public String getPropertyType() {

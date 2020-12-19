@@ -60,13 +60,8 @@
 
         <div class="form-group">
             <label for="owners">Owner</label>
-            <select class="custom-select d-block w-100" id="owner" name="owner">
-                <#if owners??>
-                    <#list owners as owner>
-                        <option value="${owner.id}">${owner.firstname} ${owner.lastname}</option>
-                    </#list>
-                </#if>
-            </select>
+            <input type="text"  name="owner" id="owner"  class="form-control"/>
+
         </div>
         <input type="submit" class="btn btn-primary"/>
 
