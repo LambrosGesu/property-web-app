@@ -9,15 +9,10 @@ import gr.codehub.team7.propertywebapp.forms.RepairSearchForm;
 import gr.codehub.team7.propertywebapp.mappers.RepairFormToRepairMapper;
 import gr.codehub.team7.propertywebapp.mappers.RepairFormToRepairMapperCreate;
 import gr.codehub.team7.propertywebapp.mappers.RepairToRepairModelMapper;
-import gr.codehub.team7.propertywebapp.model.OwnerModel;
 import gr.codehub.team7.propertywebapp.model.RepairModel;
 import gr.codehub.team7.propertywebapp.repository.OwnerRepository;
-import gr.codehub.team7.propertywebapp.mappers.RepairToRepairModelMapper;
-import gr.codehub.team7.propertywebapp.model.RepairModel;
 import gr.codehub.team7.propertywebapp.repository.RepairRepository;
-import jdk.swing.interop.SwingInterOpUtils;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.autoconfigure.security.oauth2.client.reactive.ReactiveOAuth2ClientAutoConfiguration;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
@@ -141,7 +136,7 @@ public class RepairServiceImpl implements RepairService{
                 searchResults = findByOwnerSSN(form.getSSN());
             }
         }
-        if (form.getBetweenDate1() != "" && form.getBetweenDate1() != null && form.getBetweenDate2() != null && form.getBetweenDate2() != "") {
+        if (form.getBetweenDate1() != "" && form.getBetweenDate1() != null && form.getBetweenDate2()!= null && form.getBetweenDate2() != "") {
             if (searchResults != null) {
                 searchResults.retainAll(findByRepairDateBetween(LocalDate.parse(form.getBetweenDate1()), LocalDate.parse(form.getBetweenDate2())));
             } else {

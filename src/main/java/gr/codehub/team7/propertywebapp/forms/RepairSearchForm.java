@@ -1,6 +1,5 @@
 package gr.codehub.team7.propertywebapp.forms;
 
-import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 
