@@ -7,7 +7,7 @@
             },
             price: {
                 required: true,
-                digits: true
+                number:true
                 },
             address: {
                 required: true
@@ -29,7 +29,7 @@
             },
             price: {
                 required: "Please insert the price",
-                digits: "Only digits please"
+                number: "Only digits please"
             },
             address: {
                 required: "Please insert an address"
