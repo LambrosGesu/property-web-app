@@ -108,7 +108,7 @@
             </#if>
             </select>
         </div>
-        <input type="submit" class="btn btn-primary"/>
+        <button type="submit" class="btn btn-primary mb-2">Submit</button>
 
     </form>
 </div>

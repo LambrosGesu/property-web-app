@@ -73,7 +73,7 @@
             <label for="description">SSN</label>
             <input type="text" name="owner" id="owner"  value="${repair.owner.ssn}" class="form-control"/>
         </div>
-        <input type="submit" class="btn btn-primary"/>
+        <button type="submit" class="btn btn-primary mb-2">Submit</button>
 
     </form>
 </div>
