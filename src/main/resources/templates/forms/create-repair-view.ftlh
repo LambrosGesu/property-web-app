@@ -7,10 +7,14 @@
         <div class="form-group">
 
                 <label for="datepicker">Date</label>
-                <label for="publicationDate">  </label>
-                <div class="input-group">
-                    <input type="date" name="repairDate" id="repairDate" placeholder="repairDate">
+
+            <div class="input-group">
+                <div class="input-group-prepend">
+                    <span class="input-group-text"><span data-feather="calendar"></span></span>
                 </div>
+                <input type="text" class="form-control" id="datepicker" name="repairDate" value="">
+            </div>
+
 
         </div>
 
