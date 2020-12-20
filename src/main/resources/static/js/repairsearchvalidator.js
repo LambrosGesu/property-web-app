@@ -3,12 +3,15 @@
     $('#repsearchform').validate({
         rules: {
             repairDate: {
+                date : true,
                 required: false
             },
             BetweenDate1: {
+                date : true,
                 required: false
             },
             BetweenDate2: {
+                date : true,
                 required: false
             },
             SSN: {

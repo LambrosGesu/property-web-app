@@ -15,9 +15,15 @@
             <div class="row">
                 <div class="col-md-12 order-md-1">
                     <h2>Search Owner</h2>
-                    <#include "../forms/searchOwnerForm.ftlh">
-                    <#if owners??>
-                        <#include "../partials/owners.ftlh">
+                    <#include "../forms/search-owner-view.ftlh">
+                    <br>
+                    <br>
+                    <#if postflag??>
+                        <#if owners??>
+                            <#include "../partials/owners.ftlh">
+                        <#else>
+                            <h2 class="text-muted">No results found.</h2>
+                        </#if>
                     </#if>
                 </div>
             </div>
