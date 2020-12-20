@@ -1,6 +1,6 @@
 package gr.codehub.team7.propertywebapp.configuration;
 
-import gr.codehub.team7.propertywebapp.authenticationhandlers.LoginSuccessHandler;
+import gr.codehub.team7.propertywebapp.loginhandlers.LoginSuccessHandler;
 import gr.codehub.team7.propertywebapp.service.UserDetailsServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
@@ -44,7 +44,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .formLogin()
                 .loginPage("/login")
                 .usernameParameter("email")
-                //.passwordParameter("password")
+                .passwordParameter("password")
                 .successHandler(loginSuccessHandler)
                 .failureUrl("/login?error=true") // kodikas gianni `${RequestParameters.error}`, sto fthl an iparxei ayto p.x. tipose bad credentials <------
 

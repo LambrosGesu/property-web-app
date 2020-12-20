@@ -1,4 +1,4 @@
-package gr.codehub.team7.propertywebapp.authenticationhandlers;
+package gr.codehub.team7.propertywebapp.loginhandlers;
 
 
 import org.springframework.security.core.AuthenticationException;

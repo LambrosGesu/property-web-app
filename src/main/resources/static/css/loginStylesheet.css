@@ -73,3 +73,7 @@ body {
     background-color: #000 !important;
     color: #fff;
 }
+
+.errormessage{
+    color: #d94949;
+}
