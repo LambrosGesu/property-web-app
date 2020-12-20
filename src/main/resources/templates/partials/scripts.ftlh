@@ -9,5 +9,5 @@
 </script>
 <script type="module" src="/js/repairsearchvalidator.js"></script>
 <script type="module" src="/js/validationOptions.js"></script>
-<script src="/js/search-owner-validator.js"></script>
+<script type="module" src="/js/search-owner-validator.js"></script>
 <script src="/js/datepicker.js"></script>

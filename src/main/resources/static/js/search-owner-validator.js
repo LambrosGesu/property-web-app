@@ -1,5 +1,8 @@
+import defaultValidationOptions from "./validationOptions.js"
+
 (function () {
     $('#searchOwnerForm').validate({
+        ...defaultValidationOptions,
         rules: {
             ssn: {
                 required: false,
