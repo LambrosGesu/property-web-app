@@ -1,4 +1,4 @@
-package gr.codehub.team7.propertywebapp.loginhandlers;
+package gr.codehub.team7.propertywebapp.authenticationhandlers;
 
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.GrantedAuthority;
