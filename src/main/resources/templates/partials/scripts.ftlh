@@ -10,4 +10,5 @@
 <script src="/js/repairsearchvalidator.js"></script>
 <script src="/js/create_owner_validator.js"></script>
 <script src="/js/datepicker.js"></script>
+<script src="/js/repair_validator.js"></script>
 
