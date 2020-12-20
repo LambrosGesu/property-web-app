@@ -43,10 +43,10 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 //LOGIN Configuration
                 .formLogin()
                 //.loginPage("/login")
-                //.usernameParameter()
-                //.passwordParameter()
+                //.usernameParameter() ///me strin to onoma toy pedioy tis formas  <------ this should be email?
+                //.passwordParameter() <----------------------
                 .successHandler(loginSuccessHandler)
-                .failureUrl("/login?error=true")
+                .failureUrl("/login?error=true") // kodikas gianni `${RequestParameters.error}`, sto fthl an iparxei ayto p.x. tipose bad credentials <------
 
 
                 //LOGOUT Configuration
