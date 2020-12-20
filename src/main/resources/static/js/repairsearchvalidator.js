@@ -1,6 +1,8 @@
+import defaultValidationOptions from "./validationOptions.js";
 
 (function () {
     $('#repsearchform').validate({
+        ...defaultValidationOptions,
         rules: {
             repairDate: {
                 date : true,

@@ -1,28 +1,14 @@
-.search-form-inline {
-    align-items: flex-start;
-
-}
-.search-form-inline label.error {
-    padding-top: 5px;
-    display: block;
+.validation-message .label.error {
+    padding: 5px 0 0;
     flex-basis: 100%;
-    width: 0;
-    color: red;
+    color: darkred;
 }
-.search-form-inline .input-group .form-control{
-    border-radius: .25rem;
-    border-top-left-radius: 0;
-    border-bottom-left-radius: 0;
+
+.validation-message.error {
+    border-color: darkred;
 }
-.search-form-inline .input-group .form-control.error{
-    border-color: red;
-    /*border-left-color: transparent;*/
-}
-.search-form-inline .input-group .form-control.valid{
-    border-color: green;
-}
-.search-form-inline .input-group .input-group-text {
-    border-top-right-radius: 0;
-    border-bottom-right-radius: 0;
+
+.validation-message.error * {
+    border-color: inherit;
 }
 

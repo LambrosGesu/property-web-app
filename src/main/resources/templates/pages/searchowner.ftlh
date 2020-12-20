@@ -18,12 +18,12 @@
                     <#include "../forms/search-owner-view.ftlh">
                     <br>
                     <br>
-                    <#if postflag??>
-                        <#if owners??>
-                            <#include "../partials/owners.ftlh">
-                        <#else>
-                            <h2 class="text-muted">No results found.</h2>
-                        </#if>
+
+                    <#if owners??>
+                        <#include "../partials/owners.ftlh">
+                    </#if>
+                    <#if message??>
+                        <h2 class="text-muted"><@spring.message message/></h2>
                     </#if>
                 </div>
             </div>
