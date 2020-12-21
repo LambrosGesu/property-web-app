@@ -4,7 +4,7 @@
 
     <form method="post" action="/admin/repair/create" id="add-repair">
 
-        <div class="form-group validation-message">
+        <div class="form-group">
 
                 <label for="datepicker">Date</label>
 
@@ -65,7 +65,9 @@
         <div class="form-group validation-message">
             <label for="owners">Owner</label>
             <input type="text"  name="owner" id="owner"  class="form-control"/>
-
+            <#if ssnErrorFlag??>
+                <div class="" style="color:red">Not available owner with given SSN. </div>
+            </#if>
         </div>
         <button type="submit" class="btn btn-primary mb-2">Submit</button>
 

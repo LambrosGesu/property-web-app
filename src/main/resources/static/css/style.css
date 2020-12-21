@@ -15,3 +15,11 @@
     border-color: darkred;
 }
 
+.btn {
+    background-color: black;
+    border: black;
+}
+.btn:hover {
+    background-color: gray;
+}
+

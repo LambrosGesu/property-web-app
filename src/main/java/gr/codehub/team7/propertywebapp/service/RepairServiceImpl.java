@@ -83,7 +83,11 @@ public class RepairServiceImpl implements RepairService{
     @Override
     public RepairModel insertRepair(RepairForm repairForm) {
 //        Owner owner=ownerService.findOwnerBySsn(editRepairForm.getOwner()).get();
-        Owner owner =ownerRepository.findOwnerBySsn(repairForm.getOwner()).get();
+        Optional<Owner> tempOwner = ownerRepository.findOwnerBySsn(repairForm.getOwner());
+        if(!tempOwner.isPresent()){
+            return null;
+        }
+        Owner owner = tempOwner.get();
         Repair repair=repairMapperCreate.map(repairForm);
         repair.setOwner(owner);
         Repair newRepair=repairRepository.save(repair);
