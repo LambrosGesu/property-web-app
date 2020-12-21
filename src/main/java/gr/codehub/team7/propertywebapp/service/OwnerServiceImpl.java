@@ -69,12 +69,15 @@ public class OwnerServiceImpl implements OwnerService{
 
     @Override
     public OwnerModel updateOwner(OwnerEditForm ownerForm, Long id) {
-        Owner owner=ownerEditFormtoOwner.map(ownerForm);
-        if(ownerRepository.findById(id).isPresent()){
+        Optional<Owner> ownerOptional=ownerRepository.findOwnerBySsn(ownerForm.getSsn());
+        if((ownerOptional.isEmpty() || ownerOptional.get().getId().equals(id) )) {
+
+            Owner owner=ownerEditFormtoOwner.map(ownerForm);
             owner.setId(id);
             return ownertoOwnerModel.map( ownerRepository.save(owner));
+        }else {
+            return null;
         }
-        return null;
     }
 
     @Override
