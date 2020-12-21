@@ -4,7 +4,7 @@
 
     <form method="post" action="/admin/repair/create" id="add-repair">
 
-        <div class="form-group">
+        <div class="form-group validation-message">
 
                 <label for="datepicker">Date</label>
 
@@ -18,7 +18,7 @@
 
         </div>
 
-        <div class="form-group">
+        <div class="form-group validation-message">
             <label for="status">Status</label>
 
             <select class="custom-select d-block w-100" id="status" name="status">
@@ -32,7 +32,7 @@
             </select>
         </div>
 
-        <div class="form-group">
+        <div class="form-group validation-message">
             <label for="jobType">Job Type</label>
             <select class="custom-select d-block w-100" id="jobType" name="jobType">
 
@@ -45,24 +45,24 @@
         </div>
 
 
-        <div class="form-group">
+        <div class="form-group validation-message">
             <label for="price">Price</label>
             <input type="text" name="price" id="price" class="form-control"/>
         </div>
 
-        <div class="form-group">
+        <div class="form-group validation-message">
             <label for="address">Address</label>
             <input type="text" name="address" id="address" class="form-control"/>
         </div>
 
-        <div class="form-group">
+        <div class="form-group validation-message">
             <label for="description">Description</label>
             <input type="text" name="description" id="description" class="form-control"/>
         </div>
 
 
 
-        <div class="form-group">
+        <div class="form-group validation-message">
             <label for="owners">Owner</label>
             <input type="text"  name="owner" id="owner"  class="form-control"/>
 

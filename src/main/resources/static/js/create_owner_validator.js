@@ -1,6 +1,7 @@
-
-jQuery(function ($) {
+import defaultValidationOptions from "./validationOptions.js"
+(function () {
     $('#ownerForm').validate({
+        ...defaultValidationOptions,
         rules: {
             ssn: {
                 required: true,
@@ -47,4 +48,4 @@ jQuery(function ($) {
             }
         }
     });
-});
+})();

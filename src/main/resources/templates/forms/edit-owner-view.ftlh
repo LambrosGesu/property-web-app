@@ -3,7 +3,7 @@
 
     <form method="post" action="/admin/edit-owner" name="ownerForm" id="ownerForm">
         <input type="hidden" name="id" value="${owner.id}">
-        <div class="form-group">
+        <div class="form-group validation-message">
             <label for="ssn">SSN</label>
             <@spring.bind "ownerForm.ssn"/>
             <input type="text" name="ssn" id="ssn" value="${owner.ssn}" class="form-control"/>
@@ -13,7 +13,7 @@
         </div>
 
 
-        <div class="form-group">
+        <div class="form-group validation-message">
             <label for="firstname">First Name</label>
             <@spring.bind "ownerForm.firstname"/>
             <input type="text" name="firstname" id="firstname" value="${owner.firstname}" class="form-control"/>
@@ -26,7 +26,7 @@
             </#if>
         </div>
 
-        <div class="form-group">
+        <div class="form-group validation-message">
             <label for="lastname">Last Name</label>
             <@spring.bind "ownerForm.lastname"/>
             <input type="text" name="lastname" id="lastname" value="${owner.lastname}"class="form-control"/>
@@ -39,7 +39,7 @@
             </#if>
         </div>
 
-        <div class="form-group">
+        <div class="form-group validation-message">
             <label for="address">Address</label>
             <@spring.bind "ownerForm.address"/>
             <input type="text" name="address" id="address" value="${owner.address}" class="form-control"/>
@@ -52,7 +52,7 @@
             </#if>
         </div>
 
-        <div class="form-group">
+        <div class="form-group validation-message">
             <label for="phone_number">Phone Number</label>
             <@spring.bind "ownerForm.phone_number"/>
             <input type="text" name="phone_number" id="phone_number" value="${owner.phone_number}" class="form-control"/>
@@ -65,7 +65,7 @@
             </#if>
         </div>
 
-        <div class="form-group">
+        <div class="form-group validation-message">
             <label for="email">Email</label>
             <@spring.bind "ownerForm.email"/>
             <input type="text" name="email" id="email" value="${owner.email}" class="form-control"/>
@@ -78,7 +78,7 @@
             </#if>
         </div>
 
-        <div class="form-group">
+        <div class="form-group validation-message">
             <label for="propertyType">Property Type</label>
             <select class="custom-select d-block w-100" id="propertyType" name="propertyType">
                 <#if propertyType??>

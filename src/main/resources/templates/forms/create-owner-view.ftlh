@@ -3,7 +3,7 @@
 
     <form method="post" action="/admin/owner/create" name="ownerForm" id="ownerForm">
 
-        <div class="form-group">
+        <div class="form-group validation-message">
             <label for="ssn">SSN</label>
             <@spring.bind "ownerForm.ssn"/>
             <input type="text" name="ssn" id="ssn" class="form-control"/>
@@ -20,7 +20,7 @@
         </div>
 
 
-        <div class="form-group">
+        <div class="form-group validation-message">
             <label for="firstname">First Name</label>
             <@spring.bind "ownerForm.firstname"/>
             <input type="text" name="firstname" id="firstname" class="form-control"/>
@@ -33,7 +33,7 @@
             </#if>
         </div>
 
-        <div class="form-group">
+        <div class="form-group validation-message">
 
             <label for="lastname">Last Name</label>
             <@spring.bind "ownerForm.lastname"/>
@@ -47,7 +47,7 @@
             </#if>
         </div>
 
-        <div class="form-group">
+        <div class="form-group validation-message">
             <label for="address">Address</label>
             <@spring.bind "ownerForm.address"/>
             <input type="text" name="address" id="address" class="form-control"/>
@@ -60,7 +60,7 @@
             </#if>
         </div>
 
-        <div class="form-group">
+        <div class="form-group validation-message">
             <label for="phone_number">Phone Number</label>
             <@spring.bind "ownerForm.phone_number"/>
             <input type="text" name="phone_number" id="phone_number" class="form-control"/>
@@ -73,7 +73,7 @@
             </#if>
         </div>
 
-        <div class="form-group">
+        <div class="form-group validation-message">
             <label for="email">Email</label>
             <@spring.bind "ownerForm.email"/>
             <input type="text" name="email" id="email" class="form-control"/>
@@ -86,7 +86,7 @@
             </#if>
         </div>
 
-        <div class="form-group">
+        <div class="form-group validation-message">
             <label for="password">Password</label>
             <@spring.bind "ownerForm.password"/>
             <input type="text" name="password" id="password" class="form-control"/>
@@ -99,7 +99,7 @@
             </#if>
         </div>
 
-        <div class="form-group">
+        <div class="form-group validation-message">
             <label for="propertyType">Property Type</label>
             <select class="custom-select d-block w-100" id="propertyType" name="propertyType">
             <#if propertyType??>

@@ -11,4 +11,7 @@
 .validation-message.error * {
     border-color: inherit;
 }
+.error {
+    border-color: darkred;
+}
 

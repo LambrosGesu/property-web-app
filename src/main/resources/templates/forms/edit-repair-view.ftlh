@@ -3,10 +3,10 @@
 
     <form method="post" action="/admin/editrepair" id="add-repair">
         <input type="hidden" name="id" value="${repair.id}">
-        <div class="form-group">
+        <div class="form-group validation-message">
 
             <label for="datepicker">Date</label>
-            <div class="input-group">
+            <div class="input-group ">
                 <div class="input-group-prepend">
                     <span class="input-group-text"><span data-feather="calendar"></span></span>
                 </div>
@@ -15,7 +15,7 @@
 
         </div>
 
-        <div class="form-group">
+        <div class="form-group validation-message">
             <label for="status">Status</label>
 
             <select class="custom-select d-block w-100" id="status"  name="status">
@@ -29,7 +29,7 @@
             </select>
         </div>
 
-        <div class="form-group">
+        <div class="form-group validation-message">
             <label for="jobType">Job Type</label>
             <select class="custom-select d-block w-100" id="jobType"  name="jobType">
 
@@ -42,17 +42,17 @@
         </div>
 
 
-        <div class="form-group">
+        <div class="form-group validation-message">
             <label for="price">Price</label>
             <input type="text" name="price" id="price" value="${repair.price}" class="form-control"/>
         </div>
 
-        <div class="form-group">
+        <div class="form-group validation-message">
             <label for="address">Address</label>
             <input type="text" name="address" id="address" value="${repair.address}" class="form-control"/>
         </div>
 
-        <div class="form-group">
+        <div class="form-group validation-message">
             <label for="description">Description</label>
             <input type="text" name="description" id="description"  value="${repair.description}" class="form-control"/>
         </div>
@@ -70,7 +70,7 @@
 <#--            </select>-->
 <#--        </div>-->
 
-        <div class="form-group">
+        <div class="form-group validation-message">
             <label for="description">SSN</label>
             <input type="text" name="owner" id="owner"  value="${repair.owner.ssn}" class="form-control"/>
         </div>

@@ -8,7 +8,7 @@
     feather.replace();
 </script>
 <script src="/js/repairsearchvalidator.js"></script>
-<script src="/js/create_owner_validator.js"></script>
+<script type="module" src="/js/create_owner_validator.js"></script>
 <script type="module" src="/js/repairsearchvalidator.js"></script>
 <script type="module" src="/js/validationOptions.js"></script>
 <script type="module" src="/js/search-owner-validator.js"></script>
