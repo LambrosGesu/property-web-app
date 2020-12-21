@@ -50,7 +50,7 @@ public class OwnerController {
         if (bindingResult.hasErrors()) {
             //have some error handling here, perhaps add extra error messages to the model
             model.addAttribute("errors", "an error occurred");
-            return "pages/createowner";
+            return "redirect:/admin/owner/create";
         }
 
         if(Optional.ofNullable(ownerService.insertOwner(ownerForm)).isEmpty()){
