@@ -34,7 +34,6 @@ public class OwnerServiceImpl implements OwnerService{
 
     @Override
     public List<OwnerModel> getAllOwners() {
-
         return ownerRepository.findAll()
                 .stream()
                 .map(owner-> ownertoOwnerModel.map(owner))

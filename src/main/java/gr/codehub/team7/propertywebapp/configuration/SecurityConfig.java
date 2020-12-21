@@ -42,9 +42,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
                 //LOGIN Configuration
                 .formLogin()
-                //.loginPage("/login")
-                //.usernameParameter() ///me strin to onoma toy pedioy tis formas  <------ this should be email?
-                //.passwordParameter() <----------------------
+                .loginPage("/login")
+                .usernameParameter("email")
+                .passwordParameter("password")
                 .successHandler(loginSuccessHandler)
                 .failureUrl("/login?error=true") // kodikas gianni `${RequestParameters.error}`, sto fthl an iparxei ayto p.x. tipose bad credentials <------
 
@@ -68,6 +68,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 //ERROR HANDLING FOR ACCESS DENIED
                 .and()
                 .exceptionHandling().accessDeniedPage("/error/deny_error");
+
 
     }
 
