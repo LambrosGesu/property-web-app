@@ -71,14 +71,18 @@ public class OwnerController {
     }
 
     @PostMapping("/edit-owner")
-    public  String editOwner(Model model, @Valid @ModelAttribute OwnerEditForm ownerForm, BindingResult bindingResult){
-
+    public  String editOwner(Model model, @Valid @ModelAttribute OwnerEditForm ownerForm, BindingResult bindingResult,RedirectAttributes redirectAttributes){
+        Optional<OwnerModel> ownerId=ownerService.findOwnerById(Long.parseLong(ownerForm.getId()));
         if (bindingResult.hasErrors()) {
             //have some error handling here, perhaps add extra error messages to the model
             model.addAttribute("errors", "an error occurred");
             return "pages/editowner";
         }
-        Optional<OwnerModel> ownerId=ownerService.findOwnerById(Long.parseLong(ownerForm.getId()));
+        if(Optional.ofNullable(ownerService.updateOwner(ownerForm,ownerId.get().getId())).isEmpty()){
+            redirectAttributes.addFlashAttribute("ssnErrorFlag", 1);
+            return null;
+        }
+
         ownerService.updateOwner(ownerForm,ownerId.get().getId());
 
         return  "redirect:/admin/owners";

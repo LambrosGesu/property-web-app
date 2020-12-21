@@ -5,6 +5,7 @@ import com.fasterxml.jackson.annotation.JsonManagedReference;
 import gr.codehub.team7.propertywebapp.enums.JobType;
 import gr.codehub.team7.propertywebapp.enums.Status;
 import org.apache.tomcat.jni.Local;
+import org.hibernate.annotations.Type;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
@@ -34,7 +35,7 @@ public class Repair {
     @Column(name = "job_type")
     private JobType jobType;
 
-    @Column(name = "price")
+    @Column(name = "price",columnDefinition="Decimal(10,2)")
     private double price;
 
     @Column(name = "address", length = MAX_NAME_LENGTH)

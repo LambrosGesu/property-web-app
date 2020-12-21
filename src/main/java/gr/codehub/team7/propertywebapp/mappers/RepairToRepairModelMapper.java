@@ -14,7 +14,6 @@ public class RepairToRepairModelMapper {
                 RepairModel repairModel=new RepairModel();
 
                 repairModel.setId(repair.getId());
-
                 repairModel.setRepairDate(repair.getRepairDate());
                 repairModel.setStatus(repair.getStatus() !=null ? repair.getStatus() : Status.ONGOING);
                 repairModel.setJobType(repair.getJobType() !=null ? repair.getJobType() : JobType.ELECTRICAL);
@@ -22,7 +21,6 @@ public class RepairToRepairModelMapper {
                 repairModel.setAddress(repair.getAddress());
                 repairModel.setDescription(repair.getDescription());
                 repairModel.setOwner(repair.getOwner());
-
                 repairModel.setOwnerFirstName(repair.getOwner().getFirstname());
                 repairModel.setOwnerLastName(repair.getOwner().getLastname());
 
