@@ -1,4 +1,4 @@
-<form id="searchOwnerForm" action="/searchOwner" name="searchOwnerForm" method="POST">
+<form id="searchOwnerForm" action="/admin/searchOwner" name="searchOwnerForm" method="POST">
     <div class="d-flex align-items-start">
         <div class="validation-message mb-2 mr-2">
             <div class="input-group mb-2">
