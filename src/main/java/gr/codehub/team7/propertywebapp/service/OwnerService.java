@@ -22,7 +22,5 @@ public interface OwnerService {
 
     Optional<OwnerModel> findOwnerById(Long id);
 
-//    List<OwnerModel> findOwnerBySsn(String ssn);
-
-//    List<Owner> findOwnerByEmail(String email);
+    List<OwnerModel> findOwnerBySsnOrEmail(String ssn, String email);
 }

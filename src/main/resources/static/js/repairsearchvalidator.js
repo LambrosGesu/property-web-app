@@ -1,14 +1,19 @@
+import defaultValidationOptions from "./validationOptions.js";
 
 (function () {
     $('#repsearchform').validate({
+        ...defaultValidationOptions,
         rules: {
             repairDate: {
+                date : true,
                 required: false
             },
             BetweenDate1: {
+                date : true,
                 required: false
             },
             BetweenDate2: {
+                date : true,
                 required: false
             },
             SSN: {

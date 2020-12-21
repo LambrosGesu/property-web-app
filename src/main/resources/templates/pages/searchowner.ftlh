@@ -15,9 +15,15 @@
             <div class="row">
                 <div class="col-md-12 order-md-1">
                     <h2>Search Owner</h2>
-                    <#include "../forms/searchOwnerForm.ftlh">
+                    <#include "../forms/search-owner-view.ftlh">
+                    <br>
+                    <br>
+
                     <#if owners??>
                         <#include "../partials/owners.ftlh">
+                    </#if>
+                    <#if message??>
+                        <h2 class="text-muted"><@spring.message message/></h2>
                     </#if>
                 </div>
             </div>

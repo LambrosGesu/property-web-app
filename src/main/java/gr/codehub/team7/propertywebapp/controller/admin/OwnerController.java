@@ -99,14 +99,11 @@ public class OwnerController {
     }
     @PostMapping("/searchOwner")
     public String searchOwner(@ModelAttribute("searchOwnerForm") SearchOwnerForm owner, Model model){
-        List<OwnerModel> owners = new ArrayList<>();
-        if(owner.getSsn() !=""){
-            owners.add(ownerService.findOwnerBySsn(owner.getSsn()).get());
+        List<OwnerModel> owners = ownerService.findOwnerBySsnOrEmail(owner.getSsn(), owner.getEmail());
+        if (owners.isEmpty()){
+            model.addAttribute("message", "generic.no-results");
         }
-        if(owner.getEmail() !=""){
-            owners.add(ownerService.findOwnerByEmail(owner.getEmail()).get());
-        }
-        if (!owners.isEmpty()){
+        else{
             model.addAttribute("owners", owners.stream().distinct().collect(Collectors.toList()));
         }
         return "pages/searchowner";

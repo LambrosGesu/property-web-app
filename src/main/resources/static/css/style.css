@@ -1,0 +1,14 @@
+.validation-message .label.error {
+    padding: 5px 0 0;
+    flex-basis: 100%;
+    color: darkred;
+}
+
+.validation-message.error {
+    border-color: darkred;
+}
+
+.validation-message.error * {
+    border-color: inherit;
+}
+
