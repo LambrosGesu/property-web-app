@@ -20,7 +20,7 @@
             <div class="row">
                 <div class="col-md-12 order-md-1">
                     <h2>Here is your information</h2>
-                    <table class="table">
+                    <table class="table table-striped">
                         <thead>
                         <th>Full Name</th>
                         <th>Address</th>

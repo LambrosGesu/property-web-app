@@ -100,6 +100,7 @@
         </div>
 
         <div class="form-group">
+            <label for="propertyType">Property Type</label>
             <select class="custom-select d-block w-100" id="propertyType" name="propertyType">
             <#if propertyType??>
                 <#list propertyType as property>

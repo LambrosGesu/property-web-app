@@ -1,5 +1,5 @@
 
-<table class="table">
+<table class="table table-striped">
     <thead>
     <th>Full Name</th>
     <th>SSN</th>
