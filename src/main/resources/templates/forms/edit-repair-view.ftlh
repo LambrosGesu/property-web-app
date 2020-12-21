@@ -44,7 +44,7 @@
 
         <div class="form-group validation-message">
             <label for="price">Price</label>
-            <input type="number" name="price" id="price" step="0.0" value="${repair.price}" class="form-control"/>
+            <input type="text" name="price" id="price" value="${repair.price}" class="form-control"/>
         </div>
 
         <div class="form-group validation-message">
@@ -58,20 +58,8 @@
         </div>
 
 
-
-<#--        <div class="form-group">-->
-<#--            <label for="owners">Owner</label>-->
-<#--            <select class="custom-select d-block w-100" id="owner" name="owner">-->
-<#--                <#if owners??>-->
-<#--                    <#list owners as owner>-->
-<#--                        <option value="${owner.id}" <#if repair.owner==owner>selected</#if>>${owner.firstname} ${owner.lastname}</option>-->
-<#--                    </#list>-->
-<#--                </#if>-->
-<#--            </select>-->
-<#--        </div>-->
-
         <div class="form-group validation-message">
-            <label for="description">SSN</label>
+            <label for="description">Owner's SSN</label>
             <input type="text" name="owner" id="owner"  value="${repair.owner.ssn}" class="form-control"/>
             <#if ssnErrorFlag??>
                             <div class="" style="color:red">SSN not exist.</div>

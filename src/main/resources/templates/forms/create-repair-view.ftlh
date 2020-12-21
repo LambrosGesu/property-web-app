@@ -63,7 +63,7 @@
 
 
         <div class="form-group validation-message">
-            <label for="owners">Owner</label>
+            <label for="owners">Owner's SSN</label>
             <input type="text"  name="owner" id="owner"  class="form-control"/>
             <#if ssnErrorFlag??>
                 <div class="" style="color:red">Not available owner with given SSN. </div>
