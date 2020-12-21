@@ -44,7 +44,7 @@
 
         <div class="form-group validation-message">
             <label for="price">Price</label>
-            <input type="text" name="price" id="price" value="${repair.price}" class="form-control"/>
+            <input type="number" name="price" id="price" step="0.0" value="${repair.price}" class="form-control"/>
         </div>
 
         <div class="form-group validation-message">
@@ -73,6 +73,9 @@
         <div class="form-group validation-message">
             <label for="description">SSN</label>
             <input type="text" name="owner" id="owner"  value="${repair.owner.ssn}" class="form-control"/>
+            <#if ssnErrorFlag??>
+                            <div class="" style="color:red">SSN not exist.</div>
+                        </#if>
         </div>
         <button type="submit" class="btn btn-primary mb-2">Submit</button>
 

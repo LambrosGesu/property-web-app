@@ -101,7 +101,16 @@ public class RepairController {
     }
 
     @PostMapping("/editrepair")
-    public String editRepair(@ModelAttribute EditRepairForm repair){
+    public String editRepair(Model model,@ModelAttribute EditRepairForm repair, BindingResult bindingResult, RedirectAttributes redirectAttributes){
+
+        if(repairService.updateRepair(repair,Long.parseLong(repair.getId()))==null){
+            model.addAttribute("status",Status.values());
+            model.addAttribute("jobTypes",JobType.values());
+            model.addAttribute("repair",repairService.findById(Long.parseLong(repair.getId())).get());
+
+            redirectAttributes.addFlashAttribute("ssnErrorFlag", 1);
+            return  "redirect:/admin/"+repair.getId()+"/editrepair";
+        }
         repairService.updateRepair(repair,Long.parseLong(repair.getId()));
         return "redirect:/admin/repairs";
     }
