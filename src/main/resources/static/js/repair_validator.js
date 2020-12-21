@@ -1,5 +1,10 @@
 
 (function () {
+
+$.validator.addMethod('decimal', function(value, element) {
+  return this.optional(element) || /^((\d+(\\,\d{0,2})?)|((\d*(\,\d{1,2}))))$/.test(value);
+}, "Please enter a correct number, format 0,00");
+
     $('#add-repair').validate({
         rules: {
             repairDate: {
@@ -7,7 +12,7 @@
             },
             price: {
                 required: true,
-                number:true
+                decimal:true
                 },
             address: {
                 required: true

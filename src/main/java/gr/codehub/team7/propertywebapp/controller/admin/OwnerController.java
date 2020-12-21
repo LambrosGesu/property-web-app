@@ -78,6 +78,7 @@ public class OwnerController {
             model.addAttribute("errors", "an error occurred");
             return "pages/editowner";
         }
+
         Optional<OwnerModel> ownerId=ownerService.findOwnerById(Long.parseLong(ownerForm.getId()));
         ownerService.updateOwner(ownerForm,ownerId.get().getId());
 

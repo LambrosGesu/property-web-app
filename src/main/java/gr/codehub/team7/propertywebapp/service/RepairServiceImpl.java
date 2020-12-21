@@ -43,6 +43,8 @@ public class RepairServiceImpl implements RepairService{
 
     @Override
     public List<RepairModel> findAll() {
+        List<Repair> temp = repairRepository.findAll();
+
         return repairRepository
                 .findAll()
                 .stream()
