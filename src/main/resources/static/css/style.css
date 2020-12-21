@@ -12,3 +12,11 @@
     border-color: inherit;
 }
 
+.btn {
+    background-color: black;
+    border: black;
+}
+.btn:hover {
+    background-color: gray;
+}
+

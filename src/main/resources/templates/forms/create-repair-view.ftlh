@@ -63,8 +63,11 @@
 
 
         <div class="form-group">
-            <label for="owners">Owner</label>
+            <label for="owners">Owner SSN</label>
             <input type="text"  name="owner" id="owner"  class="form-control"/>
+            <#if ssnErrorFlag??>
+                <div class="" style="color:red">Not available owner with given SSN. </div>
+             </#if>
 
         </div>
         <button type="submit" class="btn btn-primary mb-2">Submit</button>

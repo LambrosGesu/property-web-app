@@ -3,8 +3,10 @@ package gr.codehub.team7.propertywebapp.controller.admin;
 import gr.codehub.team7.propertywebapp.domain.Owner;
 import gr.codehub.team7.propertywebapp.domain.Repair;
 import gr.codehub.team7.propertywebapp.enums.JobType;
+import gr.codehub.team7.propertywebapp.enums.PropertyType;
 import gr.codehub.team7.propertywebapp.enums.Status;
 import gr.codehub.team7.propertywebapp.forms.EditRepairForm;
+import gr.codehub.team7.propertywebapp.forms.OwnerEditForm;
 import gr.codehub.team7.propertywebapp.forms.RepairForm;
 import gr.codehub.team7.propertywebapp.forms.RepairSearchForm;
 import gr.codehub.team7.propertywebapp.mappers.OwnerToOwnerModelMapper;
@@ -21,6 +23,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.swing.text.html.Option;
 import javax.validation.Valid;
@@ -61,10 +64,14 @@ public class RepairController {
 
     @PostMapping("/repair/create")
     public String createRepairPost(Model model, @Valid @ModelAttribute(REPAIRS_FORM) RepairForm repairForm,
-                                   BindingResult bindingResult){
+                                   BindingResult bindingResult, RedirectAttributes redirectAttributes){
         if(bindingResult.hasErrors()){
             model.addAttribute(ERROR_MESSAGE, "an error occurred");
             return "pages/createrepair";
+        }
+        if(Optional.ofNullable(repairService.insertRepair(repairForm)).isEmpty()){
+            redirectAttributes.addFlashAttribute("ssnErrorFlag", 1);
+            return  "redirect:/admin/repair/create";
         }
         repairService.insertRepair(repairForm);
         return "redirect:/admin/repairs";
