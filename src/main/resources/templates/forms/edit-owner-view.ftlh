@@ -5,7 +5,11 @@
         <input type="hidden" name="id" value="${owner.id}">
         <div class="form-group">
             <label for="ssn">SSN</label>
+            <@spring.bind "ownerForm.ssn"/>
             <input type="text" name="ssn" id="ssn" value="${owner.ssn}" class="form-control"/>
+            <#if ssnErrorFlag??>
+                <div class="" style="color:red">SSN already in use.</div>
+            </#if>
         </div>
 
 

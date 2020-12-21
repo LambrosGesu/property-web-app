@@ -50,7 +50,7 @@ public class OwnerController {
         if (bindingResult.hasErrors()) {
             //have some error handling here, perhaps add extra error messages to the model
             model.addAttribute("errors", "an error occurred");
-            return "redirect:/admin/owner/create";
+            return "pages/createowner";
         }
 
         if(Optional.ofNullable(ownerService.insertOwner(ownerForm)).isEmpty()){
@@ -80,7 +80,11 @@ public class OwnerController {
         }
         if(Optional.ofNullable(ownerService.updateOwner(ownerForm,ownerId.get().getId())).isEmpty()){
             redirectAttributes.addFlashAttribute("ssnErrorFlag", 1);
-            return null;
+            model.addAttribute("ownerForm",new OwnerEditForm());
+            model.addAttribute("owner",ownerService.findOwnerById(ownerId.get().getId()).get());
+            model.addAttribute(PROPERTY_TYPE,PropertyType.values());
+
+            return  "redirect:/admin/"+ownerId.get().getId()+"/edit-owner";
         }
 
         ownerService.updateOwner(ownerForm,ownerId.get().getId());
